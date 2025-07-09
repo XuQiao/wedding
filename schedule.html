@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>婚礼时间安排</title>
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="assets/audio/wedding-music.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-control" onclick="toggleMusic()">🎵</div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">我们的婚礼</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">首页</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="schedule.html">时间安排</a></li>
+                    <li class="nav-item"><a class="nav-link" href="story.html">我们的故事</a></li>
+                    <li class="nav-item"><a class="nav-link" href="map.html">婚礼地图</a></li>
+                    <li class="nav-item"><a class="nav-link" href="guestbook.html">留言祝福</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <h1 class="text-center mb-5">婚礼时间安排</h1>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">09:00 - 10:00</div>
+                <div class="timeline-content">
+                    <h3>迎宾签到</h3>
+                    <p>酒店大堂迎宾区，领取座位卡和婚礼小礼物</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">10:30 - 11:30</div>
+                <div class="timeline-content">
+                    <h3>婚礼仪式</h3>
+                    <p>宴会厅主舞台，见证我们的爱情誓言</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">12:00 - 14:00</div>
+                <div class="timeline-content">
+                    <h3>婚宴</h3>
+                    <p>享用精心准备的美味佳肴</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">14:30 - 16:00</div>
+                <div class="timeline-content">
+                    <h3>互动环节</h3>
+                    <p>游戏、合影、自由交流时间</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
