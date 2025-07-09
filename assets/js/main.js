@@ -1,6 +1,33 @@
-// 倒计时功能
+// 背景音乐控制
+function toggleMusic() {
+    const music = document.getElementById("bg-music");
+    const musicControl = document.querySelector(".music-control");
+    
+    if (music.paused) {
+        music.play();
+        musicControl.innerHTML = "🔊";
+    } else {
+        music.pause();
+        musicControl.innerHTML = "🎵";
+    }
+}
+
+// 自动降低音乐音量
+document.addEventListener("DOMContentLoaded", function() {
+    const music = document.getElementById("bg-music");
+    if (music) {
+        music.volume = 0.3; // 设置为30%音量
+    }
+    
+    // 倒计时功能（首页使用）
+    if (document.getElementById("countdown-timer")) {
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
+});
+
 function updateCountdown() {
-    const weddingDate = new Date("2025-10-19T00:00:00");
+    const weddingDate = new Date("2023-10-01T00:00:00");
     const now = new Date();
     const diff = weddingDate - now;
     
@@ -16,11 +43,3 @@ function updateCountdown() {
         <div><span>秒</span>${seconds}</div>
     `;
 }
-
-// 页面加载时初始化
-document.addEventListener("DOMContentLoaded", function() {
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-    
-    // 其他页面交互可以在这里添加
-});
