@@ -21,7 +21,7 @@ body {
     text-align: center;
     padding: 20px;
     background: linear-gradient(rgba(255, 255, 255, 0.7), 
-                url('../images/background.jpg') no-repeat center center;
+                url('../images/couple.jpg')) no-repeat center center;
     background-size: cover;
     color: #5a3e2b;
 }
