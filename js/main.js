@@ -27,7 +27,26 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function() {
     const bgMusic = document.getElementById('bgMusic');
     const musicControl = document.getElementById('musicControl');
+    const container = document.querySelector('.container');
+    const pages = document.querySelectorAll('.page');
+    const dots = document.querySelectorAll('.dot');
+    
     let isMusicPlaying = false;
+    let currentPage = 0;
+
+    // 初始化页面位置
+    function initPages() {
+        pages.forEach((page, index) => {
+            page.style.transform = `translateX(${index * 100}%)`;
+        });
+    }
+
+    // 更新导航点
+    function updateDots() {
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentPage);
+        });
+    }
 
     // 音乐控制功能
     function setupMusicControl() {
@@ -35,18 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
         function tryPlayMusic() {
             if (!isMusicPlaying) {
                 bgMusic.volume = 0.3;
-                const playPromise = bgMusic.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        isMusicPlaying = true;
-                        musicControl.classList.add('playing');
-                    }).catch(error => {
-                        console.log('自动播放被阻止:', error);
-                        // 显示提示让用户知道需要交互才能播放音乐
-                        musicControl.style.display = 'flex';
-                    });
-                }
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicControl.classList.add('playing');
+                }).catch(error => {
+                    console.log('自动播放被阻止:', error);
+                });
             }
         }
         
@@ -71,54 +84,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { once: true });
     }
 
-    // 初始化所有功能
-    setupMusicControl();
-    
-    // 页面滑动功能
+    // 更安全的滑动处理
     function setupPageSwipe() {
-        const container = document.querySelector('.container');
-        const pages = document.querySelectorAll('.page');
-        const dots = document.querySelectorAll('.dot');
-        let currentPage = 0;
         let startY = 0;
         let isScrolling = false;
 
-        // 初始化页面位置
-        function initPages() {
-            pages.forEach((page, index) => {
-                page.style.transform = `translateX(${index * 100}%)`;
-            });
-        }
-
-        // 更新导航点
-        function updateDots() {
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentPage);
-            });
-        }
-
-        // 滚动到指定页面
-        function goToPage(index) {
-            if (index < 0 || index >= pages.length || isScrolling) return;
-            
-            isScrolling = true;
-            currentPage = index;
-            
-            pages.forEach(page => {
-                page.style.transform = `translateX(${-currentPage * 100}%)`;
-            });
-            
-            updateDots();
-            
-            setTimeout(() => {
-                isScrolling = false;
-            }, 500);
-        }
-
-        // 触摸事件处理
         container.addEventListener('touchstart', function(e) {
             startY = e.touches[0].clientY;
-        });
+        }, { passive: true });
 
         container.addEventListener('touchmove', function(e) {
             if (isScrolling) return;
@@ -126,15 +99,29 @@ document.addEventListener('DOMContentLoaded', function() {
             const y = e.touches[0].clientY;
             const dy = y - startY;
             
-            // 垂直滑动检测
-            if (Math.abs(dy) > 10) {
-                if (dy > 0) {
+            // 只有当滑动距离足够大时才切换页面
+            if (Math.abs(dy) > 50) {
+                isScrolling = true;
+                
+                if (dy > 0 && currentPage > 0) {
                     // 向下滑动 - 上一页
-                    goToPage(currentPage - 1);
-                } else {
+                    currentPage--;
+                } else if (dy < 0 && currentPage < pages.length - 1) {
                     // 向上滑动 - 下一页
-                    goToPage(currentPage + 1);
+                    currentPage++;
                 }
+                
+                // 应用页面切换
+                pages.forEach(page => {
+                    page.style.transform = `translateX(${-currentPage * 100}%)`;
+                });
+                
+                updateDots();
+                
+                // 重置状态
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 500);
             }
         }, { passive: true });
 
@@ -144,17 +131,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 const target = this.getAttribute('data-target');
                 const targetIndex = Array.from(pages).findIndex(page => page.id === target);
                 if (targetIndex !== -1) {
-                    goToPage(targetIndex);
+                    currentPage = targetIndex;
+                    pages.forEach(page => {
+                        page.style.transform = `translateX(${-currentPage * 100}%)`;
+                    });
+                    updateDots();
                 }
             });
         });
-
-        // 初始化
-        initPages();
-        updateDots();
     }
 
     // 初始化所有功能
+    initPages();
+    updateDots();
     setupMusicControl();
     setupPageSwipe();
 
