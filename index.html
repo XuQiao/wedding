@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>狐狸先生与兔子小姐的森林派对</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.cn/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -24,47 +24,6 @@
             </div>
         </section>
 
-        <!-- 故事章节 -->
-        <section class="page chapter" id="chapter1">
-            <div class="content">
-                <h3>第一章：森林里的初见</h3>
-                <div class="story-content">
-                    <img src="images/chapter1.jpg" alt="森林里的初见">
-                    <p>在这里写下你们初次相遇的故事...</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="page chapter" id="chapter2">
-            <div class="content">
-                <h3>第二章：小狐狸和小兔子相爱了</h3>
-                <div class="story-content">
-                    <img src="images/chapter2.jpg" alt="小狐狸和小兔子相爱了">
-                    <p>在这里写下你们相爱的故事...</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="page chapter" id="chapter3">
-            <div class="content">
-                <h3>第三章：那个叫克拉的小猫</h3>
-                <div class="story-content">
-                    <img src="images/chapter3.jpg" alt="那个叫克拉的小猫">
-                    <p>在这里写下关于克拉小猫的故事...</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="page chapter" id="chapter4">
-            <div class="content">
-                <h3>第四章：森林里的家</h3>
-                <div class="story-content">
-                    <img src="images/chapter4.jpg" alt="森林里的家">
-                    <p>在这里写下你们共同建立家园的故事...</p>
-                </div>
-            </div>
-        </section>
-
         <!-- 婚礼信息页 -->
         <section class="page info" id="info">
             <div class="content">
@@ -72,42 +31,45 @@
                 <div class="story-content">
                     <p>故事还在继续，邀您一起续写秋日童话</p>
                     <div class="info-grid">
-                        <div class="info-item" id="invitation">
-                            <div class="icon">💌</div>
-                            <div class="title">派对邀请函</div>
-                        </div>
-                        <div class="info-item" id="story">
+                        <a href="our-story.html" class="info-item">
                             <div class="icon">📖</div>
                             <div class="title">我们的故事</div>
-                        </div>
-                        <div class="info-item" id="map">
+                        </a>
+                        <a href="forest-map.html" class="info-item">
                             <div class="icon">🗺️</div>
                             <div class="title">森林地图</div>
-                        </div>
-                        <div class="info-item" id="activity">
+                        </a>
+                        <a href="garden-party.html" class="info-item">
                             <div class="icon">🎪</div>
                             <div class="title">游园会</div>
-                        </div>
-                        <div class="info-item" id="message">
+                        </a>
+                        <a href="guestbook.html" class="info-item">
                             <div class="icon">📝</div>
                             <div class="title">留言板</div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
+    <!-- 音乐控制按钮 -->
+    <div class="music-control" id="musicControl">
+        <span class="music-icon">🎵</span>
+        <span class="music-text">背景音乐</span>
+    </div>
+
     <!-- 导航点 -->
     <div class="nav-dots">
         <span class="dot active" data-target="cover"></span>
-        <span class="dot" data-target="chapter1"></span>
-        <span class="dot" data-target="chapter2"></span>
-        <span class="dot" data-target="chapter3"></span>
-        <span class="dot" data-target="chapter4"></span>
         <span class="dot" data-target="info"></span>
     </div>
 
-    <script src="js/script.js"></script>
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop>
+        <source src="audio/background.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
