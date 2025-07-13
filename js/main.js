@@ -24,29 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // 其他页面交互可以在这里添加
 });
+
 document.addEventListener('DOMContentLoaded', function() {
     const bgMusic = document.getElementById('bgMusic');
     const musicControl = document.getElementById('musicControl');
-    const container = document.querySelector('.container');
-    const pages = document.querySelectorAll('.page');
-    const dots = document.querySelectorAll('.dot');
-    
     let isMusicPlaying = false;
-    let currentPage = 0;
-
-    // 初始化页面位置
-    function initPages() {
-        pages.forEach((page, index) => {
-            page.style.transform = `translateX(${index * 100}%)`;
-        });
-    }
-
-    // 更新导航点
-    function updateDots() {
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentPage);
-        });
-    }
 
     // 音乐控制功能
     function setupMusicControl() {
@@ -59,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     musicControl.classList.add('playing');
                 }).catch(error => {
                     console.log('自动播放被阻止:', error);
+                    // 显示提示让用户知道需要点击播放
+                    musicControl.style.display = 'flex';
                 });
             }
         }
@@ -71,9 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 isMusicPlaying = false;
                 this.classList.remove('playing');
             } else {
-                bgMusic.play();
-                isMusicPlaying = true;
-                this.classList.add('playing');
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    this.classList.add('playing');
+                }).catch(error => {
+                    alert('请点击页面任意处后，再点击音乐图标播放');
+                });
             }
         });
         
@@ -84,71 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { once: true });
     }
 
-    // 更安全的滑动处理
-    function setupPageSwipe() {
-        let startY = 0;
-        let isScrolling = false;
-
-        container.addEventListener('touchstart', function(e) {
-            startY = e.touches[0].clientY;
-        }, { passive: true });
-
-        container.addEventListener('touchmove', function(e) {
-            if (isScrolling) return;
-            
-            const y = e.touches[0].clientY;
-            const dy = y - startY;
-            
-            // 只有当滑动距离足够大时才切换页面
-            if (Math.abs(dy) > 50) {
-                isScrolling = true;
-                
-                if (dy > 0 && currentPage > 0) {
-                    // 向下滑动 - 上一页
-                    currentPage--;
-                } else if (dy < 0 && currentPage < pages.length - 1) {
-                    // 向上滑动 - 下一页
-                    currentPage++;
-                }
-                
-                // 应用页面切换
-                pages.forEach(page => {
-                    page.style.transform = `translateX(${-currentPage * 100}%)`;
-                });
-                
-                updateDots();
-                
-                // 重置状态
-                setTimeout(() => {
-                    isScrolling = false;
-                }, 500);
-            }
-        }, { passive: true });
-
-        // 导航点点击事件
-        dots.forEach(dot => {
-            dot.addEventListener('click', function() {
-                const target = this.getAttribute('data-target');
-                const targetIndex = Array.from(pages).findIndex(page => page.id === target);
-                if (targetIndex !== -1) {
-                    currentPage = targetIndex;
-                    pages.forEach(page => {
-                        page.style.transform = `translateX(${-currentPage * 100}%)`;
-                    });
-                    updateDots();
-                }
-            });
-        });
-    }
-
-    // 初始化所有功能
-    initPages();
-    updateDots();
+    // 初始化音乐控制
     setupMusicControl();
-    setupPageSwipe();
-
-    // 禁止双指缩放
-    document.addEventListener('gesturestart', function(e) {
-        e.preventDefault();
-    });
 });
