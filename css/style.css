@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif SC', serif;
+    color: #333;
+    overflow-x: hidden;
+    background-color: #f8f5f0;
+    touch-action: pan-y;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cover {
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
+                url('../images/background.jpg') no-repeat center center;
+    background-size: cover;
+    color: #5a3e2b;
+}
+
+.content {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.time {
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 40px;
+    font-family: 'Ma Shan Zheng', cursive;
+}
+
+.couple-names {
+    margin-bottom: 30px;
+}
+
+.name {
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.date, .location {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.theme {
+    font-size: 28px;
+    margin-top: 30px;
+    font-family: 'Ma Shan Zheng', cursive;
+    color: #8b5a2b;
+}
+
+.chapter {
+    background-color: #f8f5f0;
+    color: #5a3e2b;
+}
+
+.chapter h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-family: 'Ma Shan Zheng', cursive;
+}
+
+.story-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+}
+
+.story-content img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.story-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.info-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.info-item:hover {
+    transform: scale(1.05);
+}
+
+.info-item .icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.info-item .title {
+    font-size: 16px;
+}
+
+.nav-dots {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    z-index: 100;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(139, 90, 43, 0.5);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #8b5a2b;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    h2 {
+        font-size: 20px;
+    }
+    
+    .name {
+        font-size: 18px;
+    }
+    
+    .theme {
+        font-size: 24px;
+    }
+    
+    .chapter h3 {
+        font-size: 20px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
