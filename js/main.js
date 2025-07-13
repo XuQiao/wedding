@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // 其他页面交互可以在这里添加
 });
-
 document.addEventListener('DOMContentLoaded', function() {
     const bgMusic = document.getElementById('bgMusic');
     const musicControl = document.getElementById('musicControl');
@@ -32,16 +31,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 音乐控制功能
     function setupMusicControl() {
-        // 尝试自动播放音乐（移动端通常会被阻止）
+        // 尝试自动播放音乐
         function tryPlayMusic() {
             if (!isMusicPlaying) {
-                bgMusic.volume = 0.5;
-                bgMusic.play().then(() => {
-                    isMusicPlaying = true;
-                    musicControl.classList.add('playing');
-                }).catch(error => {
-                    console.log('自动播放被阻止:', error);
-                });
+                bgMusic.volume = 0.3;
+                const playPromise = bgMusic.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        isMusicPlaying = true;
+                        musicControl.classList.add('playing');
+                    }).catch(error => {
+                        console.log('自动播放被阻止:', error);
+                        // 显示提示让用户知道需要交互才能播放音乐
+                        musicControl.style.display = 'flex';
+                    });
+                }
             }
         }
         
@@ -59,10 +64,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // 页面首次点击时尝试播放音乐
-        document.body.addEventListener('click', tryPlayMusic, { once: true });
+        // 页面首次交互时尝试播放音乐
+        document.addEventListener('click', function firstInteraction() {
+            tryPlayMusic();
+            document.removeEventListener('click', firstInteraction);
+        }, { once: true });
     }
 
+    // 初始化所有功能
+    setupMusicControl();
+    
     // 页面滑动功能
     function setupPageSwipe() {
         const container = document.querySelector('.container');
