@@ -8,37 +8,58 @@
     <script src="https://webapi.amap.com/maps?v=2.0&key=7b8ae5882b32135ac7e6e3988387ec8b"></script>
 </head>
 <body>
-    <div class="map-container">
-        <header>
+    <div class="map-page">
+        <div class="map-header">
             <h1>婚礼地点导航</h1>
-            <a href="index.html" class="back-btn">返回首页</a>
-        </header>
-
-        <div class="map-info">
-            <p><strong>地点：</strong>宣城市敬亭湖宾馆</p>
-            <p><strong>时间：</strong>2025年10月19日 12:00</p>
-            <p><strong>地址：</strong>安徽省宣城市宣州区敬亭湖度假区</p>
         </div>
-
-        <div id="map"></div>
-
-        <div class="transportation">
-            <h3>交通方式</h3>
-            <div class="transport-item">
-                <h4>🚗 自驾</h4>
-                <p>导航至"宣城市敬亭湖宾馆"，酒店提供免费停车场</p>
+        
+        <div id="map-container"></div>
+        
+        <div class="location-info">
+            <h2>宣城市敬亭湖宾馆</h2>
+            <p><span>📍</span> 安徽省宣城市宣州区敬亭湖度假区</p>
+            <p><span>⏰</span> 2025年10月19日 12:00</p>
+            <div class="action-buttons">
+                <button id="navigation-btn">开始导航</button>
+                <button id="taxi-btn">呼叫出租车</button>
             </div>
-            <div class="transport-item">
-                <h4>🚕 出租车</h4>
-                <p>从宣城市区打车约20分钟，费用约30元</p>
+        </div>
+        
+        <div class="poi-list">
+            <h3>重要地点</h3>
+            <div class="poi-item" data-lng="118.7516" data-lat="30.9455">
+                <div class="poi-icon">🏨</div>
+                <div class="poi-detail">
+                    <h4>敬亭湖宾馆</h4>
+                    <p>主婚礼场地</p>
+                </div>
             </div>
-            <div class="transport-item">
-                <h4>🚌 公共交通</h4>
-                <p>乘坐18路公交车至"敬亭湖度假区"站下车，步行5分钟</p>
-            </div>
+            <!-- 更多POI点 -->
         </div>
     </div>
-
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-text">首页</div>
+        </a>
+        <a href="story.html" class="nav-item">
+            <div class="nav-icon">📖</div>
+            <div class="nav-text">故事</div>
+        </a>
+        <a href="map.html" class="nav-item">
+            <div class="nav-icon">🗺️</div>
+            <div class="nav-text">地图</div>
+        </a>
+        <a href="schedule.html" class="nav-item">
+            <div class="nav-icon">🎪</div>
+            <div class="nav-text">游园会</div>
+        </a>
+        <a href="guestbook.html" class="nav-item">
+            <div class="nav-icon">📝</div>
+            <div class="nav-text">留言</div>
+        </a>
+    </nav>
     <script src="js/map.js"></script>
 </body>
 </html>
