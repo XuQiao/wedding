@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="css/story.css">
 </head>
 <body>
+    <script>
+// 当前页面高亮
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-item').forEach(item => {
+        const link = item.getAttribute('href');
+        if (link === currentPage) {
+            item.classList.add('active');
+        }
+    });
+});
+</script>
     <div class="story-container">
         <header>
             <h1>狐狸先生与兔子小姐的故事</h1>

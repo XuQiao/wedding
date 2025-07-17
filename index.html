@@ -8,6 +8,18 @@
     <link href="https://fonts.googleapis.cn/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <script>
+// 当前页面高亮
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-item').forEach(item => {
+        const link = item.getAttribute('href');
+        if (link === currentPage) {
+            item.classList.add('active');
+        }
+    });
+});
+</script>
     <!-- 封面页 -->
     <section class="cover">
         <div class="content">
