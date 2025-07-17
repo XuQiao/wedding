@@ -2,51 +2,68 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我们的婚礼</title>
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>狐狸先生与兔子小姐的森林派对</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.cn/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">我们的婚礼</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">首页</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="schedule.html">时间安排</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="story.html">我们的故事</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="map.html">婚礼地图</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="guestbook.html">留言祝福</a>
-                </li>
-            </ul>
+    <!-- 封面页 -->
+    <section class="cover">
+        <div class="content">
+            <div class="time">12:00</div>
+            <h2>以爱之名，邀您共赴</h2>
+            <div class="couple-names">
+                <div class="name">狐狸先生：徐峤</div>
+                <div class="name">兔子小姐：曹怡琳</div>
+            </div>
+            <div class="date">2025年10月19日</div>
+            <div class="location">宣城市敬亭湖宾馆</div>
+            <div class="theme">森林派对</div>
         </div>
-    </div>
-</nav>
+    </section>
 
-    <div class="container text-center py-5">
-        <h1>欢迎参加我们的婚礼</h1>
-        <p class="lead">徐峤 & 曹怡琳 · 2025年10月19日</p>
-        <img src="assets/images/couple.jpg" alt="新人照片" class="img-fluid my-4 rounded" style="max-height: 400px;">
-        <div class="countdown mt-4">
-            <h3>距离婚礼还有</h3>
-            <div id="countdown-timer" class="d-flex justify-content-center gap-3"></div>
+    <!-- 婚礼信息页 -->
+    <section class="info">
+        <div class="content">
+            <h3>第五章：婚礼</h3>
+            <div class="story-content">
+                <p>故事还在继续，邀您一起续写秋日童话</p>
+            </div>
         </div>
+    </section>
+
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+        <a href="story.html" class="nav-item">
+            <div class="nav-icon">📖</div>
+            <div class="nav-text">我们的故事</div>
+        </a>
+        <a href="map.html" class="nav-item">
+            <div class="nav-icon">🗺️</div>
+            <div class="nav-text">森林地图</div>
+        </a>
+        <a href="schedule.html" class="nav-item">
+            <div class="nav-icon">🎪</div>
+            <div class="nav-text">游园会</div>
+        </a>
+        <a href="guestbook.html" class="nav-item">
+            <div class="nav-icon">📝</div>
+            <div class="nav-text">留言板</div>
+        </a>
+    </nav>
+
+    <!-- 音乐控制按钮 -->
+    <div class="music-control" id="musicControl">
+        <span class="music-icon">🎵</span>
+        <span class="music-text">背景音乐</span>
     </div>
 
-    <script src="assets/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop>
+        <source src="audio/平凡之路.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

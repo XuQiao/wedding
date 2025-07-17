@@ -1,84 +1,50 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <!-- 同index.html的head部分 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板 - 祝福我们</title>
+    <link rel="stylesheet" href="css/guestbook.css">
 </head>
 <body>
-    <!-- 同index.html的导航部分 -->
-    
-    <div class="container py-5">
-        <h1 class="text-center mb-4">留言祝福</h1>
-        
-        <div class="row">
-            <div class="col-md-6 mx-auto">
-                <form id="guestbook-form" class="mb-5">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">您的姓名</label>
-                        <input type="text" class="form-control" id="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">祝福留言</label>
-                        <textarea class="form-control" id="message" rows="3" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">提交祝福</button>
-                </form>
-                
-                <div id="guestbook-entries">
-                    <!-- 留言将在这里显示 -->
-                </div>
+    <div class="guestbook-container">
+        <header>
+            <h1>留言板</h1>
+            <a href="index.html" class="back-btn">返回首页</a>
+        </header>
+
+        <div class="greeting">
+            <p>感谢您参加我们的婚礼！</p>
+            <p>请留下您的祝福和想对我们说的话～</p>
+        </div>
+
+        <form id="messageForm">
+            <div class="form-group">
+                <label for="name">您的名字</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="message">祝福留言</label>
+                <textarea id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">提交祝福</button>
+        </form>
+
+        <div class="messages" id="messages">
+            <!-- 留言将在这里动态显示 -->
+            <div class="message">
+                <h4>张三</h4>
+                <p>祝你们百年好合，永结同心！</p>
+                <small>2025-10-10</small>
+            </div>
+            <div class="message">
+                <h4>李四</h4>
+                <p>狐狸和兔子的爱情太美好了，一定要幸福哦！</p>
+                <small>2025-10-11</small>
             </div>
         </div>
     </div>
 
-    <script>
-        // 使用localStorage存储留言
-        document.getElementById("guestbook-form").addEventListener("submit", function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById("name").value;
-            const message = document.getElementById("message").value;
-            
-            // 获取现有留言或初始化空数组
-            const entries = JSON.parse(localStorage.getItem("guestbookEntries")) || [];
-            
-            // 添加新留言
-            entries.push({
-                name: name,
-                message: message,
-                date: new Date().toLocaleDateString()
-            });
-            
-            // 保存回localStorage
-            localStorage.setItem("guestbookEntries", JSON.stringify(entries));
-            
-            // 刷新留言显示
-            displayEntries();
-            
-            // 清空表单
-            document.getElementById("guestbook-form").reset();
-            
-            // 显示成功提示
-            alert("感谢您的祝福！");
-        });
-        
-        // 显示所有留言
-        function displayEntries() {
-            const entries = JSON.parse(localStorage.getItem("guestbookEntries")) || [];
-            const entriesContainer = document.getElementById("guestbook-entries");
-            
-            entriesContainer.innerHTML = entries.map(entry => `
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">${entry.name}</h5>
-                        <p class="card-text">${entry.message}</p>
-                        <p class="card-text"><small class="text-muted">${entry.date}</small></p>
-                    </div>
-                </div>
-            `).join("");
-        }
-        
-        // 页面加载时显示已有留言
-        displayEntries();
-    </script>
+    <script src="js/guestbook.js"></script>
 </body>
 </html>
