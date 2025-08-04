@@ -25,6 +25,7 @@ function initMap() {
     infoWindow.open(map, position);
 }
 
+
 // 页面加载完成后初始化地图
 window.onload = function() {
     initMap();
