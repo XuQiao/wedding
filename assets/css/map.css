@@ -1,0 +1,126 @@
+.map-page {
+    padding-bottom: 70px; /* 为底部导航留出空间 */
+}
+
+#map-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.location-info {
+    padding: 15px;
+    background: white;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.location-info h2 {
+    color: #8b5a2b;
+    margin-bottom: 10px;
+}
+
+.location-info p {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    color: #555;
+}
+
+.location-info span {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.action-buttons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#navigation-btn {
+    background-color: #8b5a2b;
+    color: white;
+}
+
+#taxi-btn {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.poi-list {
+    margin: 15px;
+}
+
+.poi-list h3 {
+    color: #5a3e2b;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.poi-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+
+.poi-icon {
+    font-size: 24px;
+    margin-right: 12px;
+    width: 40px;
+    height: 40px;
+    background: #f8f5f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.poi-detail h4 {
+    color: #5a3e2b;
+    margin-bottom: 4px;
+}
+
+.poi-detail p {
+    color: #777;
+    font-size: 14px;
+}
+
+.map-infowindow {
+    padding: 10px;
+    min-width: 200px;
+}
+
+.map-infowindow h3 {
+    color: #8b5a2b;
+    margin-bottom: 5px;
+}
+
+.map-infowindow p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.map-infowindow img {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 4px;
+}

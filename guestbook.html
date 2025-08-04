@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>留言板 - 祝福我们</title>
     <link rel="stylesheet" href="css/guestbook.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.cn/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
+    <script>
+// 当前页面高亮
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-item').forEach(item => {
+        const link = item.getAttribute('href');
+        if (link === currentPage) {
+            item.classList.add('active');
+        }
+    });
+});
+</script>
     <div class="guestbook-container">
-        <header>
-            <h1>留言板</h1>
-            <a href="index.html" class="back-btn">返回首页</a>
-        </header>
-
         <div class="greeting">
             <p>感谢您参加我们的婚礼！</p>
             <p>请留下您的祝福和想对我们说的话～</p>
@@ -44,7 +54,29 @@
             </div>
         </div>
     </div>
-
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-text">首页</div>
+        </a>
+        <a href="story.html" class="nav-item">
+            <div class="nav-icon">📖</div>
+            <div class="nav-text">故事</div>
+        </a>
+        <a href="map.html" class="nav-item">
+            <div class="nav-icon">🗺️</div>
+            <div class="nav-text">地图</div>
+        </a>
+        <a href="schedule.html" class="nav-item">
+            <div class="nav-icon">🎪</div>
+            <div class="nav-text">游园会</div>
+        </a>
+        <a href="guestbook.html" class="nav-item">
+            <div class="nav-icon">📝</div>
+            <div class="nav-text">留言</div>
+        </a>
+    </nav>
     <script src="js/guestbook.js"></script>
 </body>
 </html>

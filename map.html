@@ -5,13 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>森林地图 - 婚礼导航</title>
     <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.cn/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://webapi.amap.com/maps?v=2.0&key=7b8ae5882b32135ac7e6e3988387ec8b"></script>
 </head>
 <body>
-    <div class="map-container">
-        <header>
+    <script>
+// 当前页面高亮
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-item').forEach(item => {
+        const link = item.getAttribute('href');
+        if (link === currentPage) {
+            item.classList.add('active');
+        }
+    });
+});
+</script>
+    <div class="map-page">
+        <div class="map-header">
             <h1>婚礼地点导航</h1>
-        </header>
 
         <div class="map-info">
             <p><strong>仪式地点：</strong>宣城市研学基地草坪</p>
@@ -65,10 +78,55 @@
             <div class="transport-item">
                 <h4>🚌 公共交通</h4>
                 <p>乘坐1路公交车至"敬亭湖东大门"站下车，步行15分钟</p>
+        </div>
+        
+        <div id="map-container"></div>
+        
+        <div class="location-info">
+            <h2>宣城市敬亭湖宾馆</h2>
+            <p><span>📍</span> 安徽省宣城市宣州区敬亭湖度假区</p>
+            <p><span>⏰</span> 2025年10月19日 12:00</p>
+            <div class="action-buttons">
+                <button id="navigation-btn">开始导航</button>
+                <button id="taxi-btn">呼叫出租车</button>
             </div>
         </div>
+        
+        <div class="poi-list">
+            <h3>重要地点</h3>
+            <div class="poi-item" data-lng="118.7516" data-lat="30.9455">
+                <div class="poi-icon">🏨</div>
+                <div class="poi-detail">
+                    <h4>敬亭湖宾馆</h4>
+                    <p>主婚礼场地</p>
+                </div>
+            </div>
+            <!-- 更多POI点 -->
+        </div>
     </div>
-
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-text">首页</div>
+        </a>
+        <a href="story.html" class="nav-item">
+            <div class="nav-icon">📖</div>
+            <div class="nav-text">故事</div>
+        </a>
+        <a href="map.html" class="nav-item">
+            <div class="nav-icon">🗺️</div>
+            <div class="nav-text">地图</div>
+        </a>
+        <a href="schedule.html" class="nav-item">
+            <div class="nav-icon">🎪</div>
+            <div class="nav-text">游园会</div>
+        </a>
+        <a href="guestbook.html" class="nav-item">
+            <div class="nav-icon">📝</div>
+            <div class="nav-text">留言</div>
+        </a>
+    </nav>
     <script src="js/map.js"></script>
 </body>
 </html>
