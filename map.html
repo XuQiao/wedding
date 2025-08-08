@@ -7,106 +7,54 @@
     <link rel="stylesheet" href="css/map.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.cn/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://webapi.amap.com/maps?v=2.0&key=7b8ae5882b32135ac7e6e3988387ec8b"></script>
+    <div id="map-container"></div>
+    <script type="text/javascript"> window._AMapSecurityConfig = {securityJsCode: "61415f48b5d4dbe08e0185b3f6633566"};</script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=7b8ae5882b32135ac7e6e3988387ec8b"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+
 </head>
 <body>
-    <script>
-// 当前页面高亮
-document.addEventListener('DOMContentLoaded', function() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-item').forEach(item => {
-        const link = item.getAttribute('href');
-        if (link === currentPage) {
-            item.classList.add('active');
-        }
-    });
-});
-</script>
-    <div class="map-page">
-        <div class="map-header">
-            <h1>婚礼地点导航</h1>
-
-        <div class="map-info">
-            <p><strong>仪式地点：</strong>宣城市研学基地草坪</p>
-            <p><strong>😑地点：</strong>宣城市敬亭湖宾馆 - 通和西厅</p>
-            <p><strong>时间：</strong>2025年10月19日 11:08</p>
-            <p><strong>地址：</strong>安徽省宣城市宣州区敬亭湖度假区</p>
+    <div class="transportation">
+        <h3>交通方式</h3>
+        <div class="transport-item">
+            <h4>🚗 自驾</h4>
+            <p>导航至"宣城市敬亭湖宾馆/宣城市敬亭山研学基地"，酒店提供免费停车场</p>
         </div>
+        <div class="transport-item">
+            <h4>🚕 出租车</h4>
+            <p>从宣城市区打车约20分钟，费用约10元</p>
+        </div>
+        <div class="transport-item">
+            <h4>🚌 公共交通</h4>
+            <p>乘坐1路公交车至"敬亭湖东大门"站下车，步行15分钟</p>
+    </div>
     
-        <div id="map"></div>
-    <script>
-        // 初始化地图
-        var map = new AMap.Map('map-container', {
-            zoom: 15,  // 缩放级别
-            center: [118.737997,30.972957],  // 宣城市研学基地草坪的经纬度
-            viewMode: '2D'  // 使用2D视图
-        });
-        
-        // 添加标记点
-        var marker = new AMap.Marker({
-            position: [118.737997,30.972957],
-            title: "婚礼仪式地点"
-        });
-        map.add(marker);
-        
-        // 添加信息窗口
-        var infoWindow = new AMap.InfoWindow({
-            content: '<div style="padding: 5px;"><strong>婚礼仪式地点</strong><br/>宣城市研学基地草坪</div>',
-            offset: new AMap.Pixel(0, -30)
-        });
-        
-        // 点击标记点显示信息窗口
-        marker.on('click', function() {
-            infoWindow.open(map, marker.getPosition());
-        });
-        
-        // 默认打开信息窗口
-        infoWindow.open(map, marker.getPosition());
-    </script>
-
-
-        <div class="transportation">
-            <h3>交通方式</h3>
-            <div class="transport-item">
-                <h4>🚗 自驾</h4>
-                <p>导航至"宣城市敬亭湖宾馆/宣城市敬亭山研学基地"，酒店提供免费停车场</p>
-            </div>
-            <div class="transport-item">
-                <h4>🚕 出租车</h4>
-                <p>从宣城市区打车约20分钟，费用约10元</p>
-            </div>
-            <div class="transport-item">
-                <h4>🚌 公共交通</h4>
-                <p>乘坐1路公交车至"敬亭湖东大门"站下车，步行15分钟</p>
+    <div id="map-container"></div>
+    
+    <div class="location-info">
+        <h2>宣城市敬亭湖宾馆</h2>
+        <p><span>📍</span> 安徽省宣城市宣州区敬亭湖度假区</p>
+        <div class="action-buttons">
+            <button id="navigation-btn">开始导航</button>
+            <button id="taxi-btn">呼叫出租车</button>
         </div>
-        
-        <div id="map-container"></div>
-        
-        <div class="location-info">
-            <h2>宣城市敬亭湖宾馆</h2>
-            <p><span>📍</span> 安徽省宣城市宣州区敬亭湖度假区</p>
-            <div class="action-buttons">
-                <button id="navigation-btn">开始导航</button>
-                <button id="taxi-btn">呼叫出租车</button>
+    </div>
+    
+    <div class="poi-list">
+        <h3>重要地点</h3>
+        <div class="poi-item" data-lng="118.737997" data-lat="30.972957">
+            <div class="poi-icon">🏨</div>
+            <div class="poi-detail">
+                <h4>敬亭湖研学基地</h4>
+                <p>主婚礼场地</p>
             </div>
         </div>
-        
-        <div class="poi-list">
-            <h3>重要地点</h3>
-            <div class="poi-item" data-lng="118.737997" data-lat="30.972957">
-                <div class="poi-icon">🏨</div>
-                <div class="poi-detail">
-                    <h4>敬亭湖研学基地</h4>
-                    <p>主婚礼场地</p>
-                </div>
+        <div class="poi-item" data-lng="118.740218" data-lat="30.97028">
+            <div class="poi-icon">🏨</div>
+            <div class="poi-detail">
+                <h4>敬亭湖宾馆</h4>
+                <p>午宴场地</p>
             </div>
-            <div class="poi-item" data-lng="118.740218" data-lat="30.97028">
-                <div class="poi-icon">🏨</div>
-                <div class="poi-detail">
-                    <h4>敬亭湖宾馆</h4>
-                    <p>午宴场地</p>
-                </div>
-        </div>
     </div>
     <!-- 底部导航栏 -->
     <nav class="bottom-nav">
@@ -131,6 +79,5 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="nav-text">留言</div>
         </a>
     </nav>
-    <script src="js/map.js"></script>
 </body>
 </html>
