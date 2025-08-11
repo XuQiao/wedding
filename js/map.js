@@ -23,8 +23,14 @@ function initMap() {
     const venueMarker = new AMap.Marker({
         position: [118.737997,30.972957],
         map: map,
+        icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png',
+        title: '婚礼主场地 -- 研学基地内部草坪'
+    });
+    const banquetMarker = new AMap.Marker({
+        position: [118.740218,30.97028],
+        map: map,
         icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
-        title: '婚礼主场地'
+        title: '午宴场地 -- 敬亭湖宾馆通和西厅'
     });
 
     // 信息窗口内容
@@ -43,6 +49,10 @@ function initMap() {
         infoWindow.open(map, venueMarker.getPosition());
     });
 
+    banquetMarker.on('click', function() {
+        infoWindow.open(map, banquetMarker.getPosition());
+    });
+
     // POI点交互
     document.querySelectorAll('.poi-item').forEach(item => {
         item.addEventListener('click', function() {
@@ -50,9 +60,11 @@ function initMap() {
             const lat = parseFloat(this.dataset.lat);
             map.setCenter([lng, lat]);
             venueMarker.setPosition([lng, lat]);
+            banquetMarker.setPosition([lng, lat]);
             infoWindow.open(map, [lng, lat]);
         });
     });
+
 
     // 导航功能
     document.getElementById('navigation-btn').addEventListener('click', function() {
@@ -63,12 +75,13 @@ function initMap() {
             });
             transfer.search([
                 { keyword: '我的位置' },
-                { keyword: '宣城市敬亭湖宾馆' }
+                { keyword: '宣城市研学基地' }
             ]);
         });
     });
 
     // 出租车功能
+    /*
     document.getElementById('taxi-btn').addEventListener('click', function() {
         AMap.plugin('AMap.Driving', function() {
             const driving = new AMap.Driving({
@@ -87,56 +100,8 @@ function initMap() {
             });
         });
     });
+    */
 }
-console.log('AMap对象:', typeof AMap);
-
-document.addEventListener('DOMContentLoaded', function() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-item').forEach(item => {
-        const link = item.getAttribute('href');
-        if (link === currentPage) {
-            item.classList.add('active');
-        }
-    });
-});
-AMap.securityConfig = {
-    securityJsCode: "61415f48b5d4dbe08e0185b3f6633566"
-};
-// 初始化地图
-var map = new AMap.Map('map-container', {
-    zoom: 15,  // 缩放级别
-    center: [118.737997,30.972957],  // 宣城市研学基地草坪的经纬度
-    viewMode: '2D'  // 使用2D视图
-});
-
-// 添加标记点
-var marker = new AMap.Marker({
-    position: [118.737997,30.972957],
-    title: "婚礼仪式地点"
-});
-map.add(marker);
-
-// 添加信息窗口
-var infoWindow = new AMap.InfoWindow({
-    content: '<div style="padding: 5px;"><strong>婚礼仪式地点</strong><br/>宣城市研学基地草坪</div>',
-    offset: new AMap.Pixel(0, -30)
-});
-
-// 点击标记点显示信息窗口
-marker.on('click', function() {
-    infoWindow.open(map, marker.getPosition());
-});
-
-// 默认打开信息窗口
-infoWindow.open(map, marker.getPosition());
-
-
-// 等待DOM完全加载
-document.addEventListener('DOMContentLoaded', function() {
-    // 初始化地图
-    initMap();
-});
-
 
 // 页面加载完成后初始化地图
 window.onload = function() {
