@@ -113,10 +113,12 @@ function updateCountdown() {
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
     
+    /*
     document.getElementById("countdown-timer").innerHTML = `
         <div><span>天</span>${days}</div>
         <div><span>时</span>${hours}</div>
         <div><span>分</span>${minutes}</div>
         <div><span>秒</span>${seconds}</div>
     `;
+    */
 }
