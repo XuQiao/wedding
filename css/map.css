@@ -134,7 +134,7 @@
     position: relative;
 }
 #map-container:after {
-    content: "地图加载中...";
+    /*content: "地图加载中...";*/
     position: absolute;
     top: 50%;
     left: 50%;

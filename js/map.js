@@ -5,7 +5,7 @@ function initMap() {
     const map = new AMap.Map('map-container', {
         zoom: 16,
         center: [118.740218,30.97028],  // 敬亭湖宾馆坐标
-        viewMode: '3D',
+        viewMode: '2D',
         pitch: 45
     });
 
@@ -43,6 +43,15 @@ function initMap() {
                   </div>`,
         offset: new AMap.Pixel(0, -30)
     });
+    const infoWindow1 = new AMap.InfoWindow({
+        content: `<div class="map-infowindow">
+                    <h3>狐狸先生 & 兔子小姐</h3>
+                    <p>午宴</p>
+                    <p>2025年10月19日 12:08</p>
+                    <img src="images/wedding-icon.png" alt="婚礼图标">
+                  </div>`,
+        offset: new AMap.Pixel(0, -30)
+    });
 
     // 点击标记显示信息窗口
     venueMarker.on('click', function() {
@@ -50,7 +59,7 @@ function initMap() {
     });
 
     banquetMarker.on('click', function() {
-        infoWindow.open(map, banquetMarker.getPosition());
+        infoWindow1.open(map, banquetMarker.getPosition());
     });
 
     // POI点交互
@@ -62,6 +71,7 @@ function initMap() {
             venueMarker.setPosition([lng, lat]);
             banquetMarker.setPosition([lng, lat]);
             infoWindow.open(map, [lng, lat]);
+            infoWindow1.open(map, [lng, lat]);
         });
     });
 
