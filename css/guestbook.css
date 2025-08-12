@@ -1,3 +1,146 @@
+/* 基础样式 */
+body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background-color: #f9f3f3;
+    color: #555;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 表单样式 */
+#messageForm {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+#messageForm:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #e88f8f;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #f0d1d1;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #e88f8f;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(232, 143, 143, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* 按钮样式 */
+button[type="submit"] {
+    background: linear-gradient(135deg, #e88f8f, #e8b4b4);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #e8b4b4, #e88f8f);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(232, 143, 143, 0.3);
+}
+
+/* 留言列表样式 */
+.messages {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.message {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.message:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, #e88f8f, #f3d7d7);
+}
+
+.message h4 {
+    margin-top: 0;
+    color: #e88f8f;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.message p {
+    margin: 0 0 10px 0;
+    color: #666;
+}
+
+.message small {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+    
+    #messageForm {
+        padding: 20px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 10px;
+    }
+}
 /* 底部导航栏样式 - 与首页完全一致 */
 .bottom-nav {
     position: fixed;

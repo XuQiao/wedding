@@ -1,26 +1,88 @@
+// 当前页面高亮
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-item').forEach(item => {
+        const link = item.getAttribute('href');
+        if (link === currentPage) {
+            item.classList.add('active');
+        }
+    });
+});
+
+const repoOwner = 'xuqiao';
+const repoName = 'wedding';
+//const accessToken = process.env.PAT; // 有issues权限的token
+        
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('messageForm');
     const messagesContainer = document.getElementById('messages');
-    
     // 模拟从本地存储获取留言
-    function loadMessages() {
-        const messages = JSON.parse(localStorage.getItem('weddingMessages')) || [];
-        displayMessages(messages);
+    async function loadMessages() {
+        try {
+            const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/issues?labels=wedding-message&state=all`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const issues = await response.json();
+            //messagesContainer.innerHTML = '';
+            
+            /*if (issues.length === 0) {
+                messagesContainer.innerHTML = '<p style="text-align:center;color:#999;">暂无留言，快来写下你的祝福吧~</p>';
+                return;
+            }*/
+            
+            issues.forEach(function(issue) {
+                // 从issue标题提取作者名
+                const authorMatch = issue.title.match(/来自(.+)的祝福/);
+                const author = authorMatch ? authorMatch[1] : '匿名';
+                
+                // 从issue body提取内容和时间
+                const contentMatch = issue.body.match(/^(.+)\n\n提交时间:/s);
+                const content = contentMatch ? contentMatch[1].trim() : issue.body;
+                const timeMatch = issue.body.match(/提交时间: (.+)$/);
+                const time = timeMatch ? timeMatch[1] : new Date(issue.created_at).toLocaleString('zh-CN');
+                
+                const messageItem = document.createElement('div');
+                messageItem.className = 'message-item';
+                messageItem.innerHTML = `
+                    <div class="message-author">${author}</div>
+                    <div class="message-content">${content}</div>
+                    <div class="message-time">${time}</div>
+                `;
+                messagesContainer.appendChild(messageItem);
+            });
+        } catch (error) {
+            console.error('加载留言失败:', error);
+            messagesContainer.innerHTML = '<p style="text-align:center;color:#ff0000;">加载留言失败，请刷新重试</p>';
+        }
     }
-    
-    // 显示留言
-    function displayMessages(messages) {
-        messagesContainer.innerHTML = '';
-        messages.forEach(msg => {
-            const messageEl = document.createElement('div');
-            messageEl.className = 'message';
-            messageEl.innerHTML = `
-                <h4>${msg.name}</h4>
-                <p>${msg.message}</p>
-                <small>${new Date(msg.timestamp).toLocaleDateString()}</small>
-            `;
-            messagesContainer.prepend(messageEl);
+
+    // 发布留言到GitHub Issues
+    async function postMessage(author, content) {
+        const title = `来自${author}的祝福`;
+        const body = `${content}\n\n提交时间: ${new Date().toLocaleString('zh-CN')}`;
+        
+        const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/issues`, {
+            method: 'POST',
+            headers: {
+                //Authorization': `token ${accessToken}`,
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.github.v3+json'
+            },
+            body: JSON.stringify({
+                title: title,
+                body: body,
+                labels: ['wedding-message']
+            })
         });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        return await response.json();
     }
     
     // 提交留言
@@ -39,12 +101,10 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
         // 获取现有留言并添加新留言
-        const messages = JSON.parse(localStorage.getItem('weddingMessages')) || [];
-        messages.push(newMessage);
-        localStorage.setItem('weddingMessages', JSON.stringify(messages));
+        postMessage(newMessage)
         
         // 刷新显示
-        displayMessages(messages);
+        loadMessages();
         
         // 清空表单
         form.reset();
