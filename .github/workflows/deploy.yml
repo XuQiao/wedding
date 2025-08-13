@@ -7,6 +7,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
     steps:
       - uses: actions/checkout@v3
       
@@ -17,7 +20,5 @@ jobs:
           node js/setup-config.js
       
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v3
-        with:
-          github_token: ${{ secrets.PAT }}
-          publish_dir: ./
+        id: deployment
+        uses: actions/deploy-pages@v4 
