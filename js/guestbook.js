@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-const { GITHUB_TOKEN, REPO_OWNER, REPO_NAME } = window._env;
-const repoOwner = REPO_OWNER
-const repoName = REPO_NAME
+const { GH_TOKEN } = window._githubConfig;
+const repoOwner = "xuqiao"
+const repoName = "wedding"
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('messageForm');
