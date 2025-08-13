@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
 const { GH_TOKEN } = window._githubConfig;
 const repoOwner = "xuqiao"
 const repoName = "wedding"
-console.log(GH_TOKEN)
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('messageForm');
