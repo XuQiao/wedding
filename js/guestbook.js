@@ -1,4 +1,8 @@
 // 当前页面高亮
+const { GH_TOKEN } = window._githubConfig;
+const repoOwner = "xuqiao"
+const repoName = "wedding"
+
 document.addEventListener('DOMContentLoaded', function() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-item').forEach(item => {
@@ -7,16 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
             item.classList.add('active');
         }
     });
-});
-
-const { GH_TOKEN } = window._githubConfig;
-const repoOwner = "xuqiao"
-const repoName = "wedding"
-
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('messageForm');
     const messagesContainer = document.getElementById('messages');
-    console.log("Load success")
+    const form = document.getElementById('messageForm');
     async function loadMessages() {
         try {
             const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/issues?sort=created&direction=desc`);
