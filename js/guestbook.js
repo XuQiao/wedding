@@ -16,7 +16,7 @@ const repoName = "wedding"
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('messageForm');
     const messagesContainer = document.getElementById('messages');
-
+    console.log("Load success")
     async function loadMessages() {
         try {
             const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/issues?sort=created&direction=desc`);
