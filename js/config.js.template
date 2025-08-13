@@ -1,6 +1,4 @@
 // 这个文件会在部署时被自动生成
 window._githubConfig = {
-  token: /* GH_TOKEN */ null,
-  repoOwner: /* REPO_OWNER */ null,
-  repoName: /* REPO_NAME */ null
+  GH_TOKEN: /* GH_TOKEN */
 };
