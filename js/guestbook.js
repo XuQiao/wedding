@@ -12,11 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
 const { GH_TOKEN } = window._githubConfig;
 const repoOwner = "xuqiao"
 const repoName = "wedding"
+console.log(GH_TOKEN)
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('messageForm');
     const messagesContainer = document.getElementById('messages');
-    // 模拟从本地存储获取留言
+
     async function loadMessages() {
         try {
             const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/issues?sort=created&direction=desc`);
@@ -68,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/issues`, {
             method: 'POST',
             headers: {
-                'Authorization': `token ${GITHUB_TOKEN}`,
+                'Authorization': `token ${GH_TOKEN}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/vnd.github.v3+json'
             },
