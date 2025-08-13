@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('messageForm');
     async function loadMessages() {
         try {
+            const existingMessages = messagesContainer.innerHTML;
+
             const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/issues?sort=created&direction=desc`);
             
             if (!response.ok) {
@@ -22,12 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             const issues = await response.json();
-            //messagesContainer.innerHTML = '';
-            
-            /*if (issues.length === 0) {
-                messagesContainer.innerHTML = '<p style="text-align:center;color:#999;">暂无留言，快来写下你的祝福吧~</p>';
-                return;
-            }*/
+            messagesContainer.innerHTML = '';
+  
             
             issues.forEach(function(issue) {
                 // 从issue标题提取作者名
@@ -49,6 +47,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 messagesContainer.appendChild(messageItem);
             });
+
+            if (existingMessages.trim() !== '') {
+                const existingContainer = document.createElement('div');
+                existingContainer.innerHTML = existingMessages;
+                messagesContainer.appendChild(existingContainer);
+            }
+          
+            if (issues.length === 0 && existingMessages.trim() === '') {
+                messagesContainer.innerHTML = '<p style="text-align:center;color:#999;">暂无留言，快来写下你的祝福吧~</p>';
+            }
+
         } catch (error) {
             console.error('加载留言失败:', error);
             messagesContainer.innerHTML = '<p style="text-align:center;color:#ff0000;">加载留言失败，请刷新重试</p>';
