@@ -11,7 +11,7 @@ const templatePath = path.join(__dirname, '../js/config.js.template');
 let template = fs.readFileSync(templatePath, 'utf8');
 
 // 替换占位符
-template = template.replace('/* GH_TOKEN */', `'${config.GH_TOKEN}'`)
+template = template.replace('/* GH_TOKEN */', `"${config.GH_TOKEN}"`)
 
 // 写入实际配置文件
 const outputPath = path.join(__dirname, '../js/config.js');
