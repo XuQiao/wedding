@@ -13,9 +13,11 @@ jobs:
       # 设置环境变量
       - name: Setup config
         run: |
+          GH_TOKEN=${{ secrets.PAT }} \
           node js/setup-config.js
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
+          github_token: ${{ secrets.PAT }}
           publish_dir: ./
