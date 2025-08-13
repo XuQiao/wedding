@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const config = {
-  GH_TOKEN: process.env.PAT,
+  GH_TOKEN: process.env.GH_TOKEN,
 };
 
 // 读取模板文件
