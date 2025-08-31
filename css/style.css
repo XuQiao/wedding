@@ -141,7 +141,6 @@ h2 {
 body {
     font-family: 'Microsoft YaHei', sans-serif;
     padding-top: 56px;
-    position: fixed;
     bottom: 0;
     width: 100%;
     z-index: 1000;
@@ -268,4 +267,10 @@ p {
   padding: 25px;
   box-shadow: 0 5px 15px rgba(139, 90, 43, 0.1);
   margin-bottom: 30px;
+}
+
+/* 为内容区域添加底部间距，避免被导航栏遮挡 */
+.main-content {
+  padding-bottom: 70px; /* 导航栏高度 + 额外间距 */
+  min-height: 100vh;
 }

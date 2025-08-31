@@ -5,8 +5,9 @@
       "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome",
-      "url": "http://localhost:5500", // Live Server 默认端口
-      "webRoot": "${workspaceFolder}"
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "file": "${workspaceFolder}/index.html"
     }
   ]
 }

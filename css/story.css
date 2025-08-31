@@ -40,8 +40,15 @@
 
 /* 确保内容不被导航栏遮挡 */
 body {
-    padding-bottom: 60px;
+    font-family: 'Microsoft YaHei', sans-serif;
+    padding-top: 56px;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 60px; /* 固定高度 */
+    padding-bottom: 60px; /* 等于导航栏高度 */
 }
+
 /* 章节通用样式 */
 .chapter {
     padding: 30px 20px;
@@ -79,7 +86,7 @@ body {
 
 /* 章节图片 */
 .chapter img {
-    width: 100%;
+    width: 50%;
     border-radius: 10px;
     margin: 15px 0;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);

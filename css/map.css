@@ -120,7 +120,7 @@
 }
 
 .map-infowindow img {
-    width: 100%;
+    width: 30%;
     margin-top: 10px;
     border-radius: 4px;
 }
@@ -140,4 +140,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #8b5a2b;
+}
+
+.poi-list {
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 5px 15px rgba(139, 90, 43, 0.1);
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
 }
