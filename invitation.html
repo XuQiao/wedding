@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诚挚邀请您参加我们的婚礼</title> <!-- 这是默认标题 -->
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+</head>
+<body>
+    <!-- 您的请柬页面内容 -->
+    <h1>徐峤与曹怡琳的森林派对 - 婚礼邀请</h1>
+    <p>时间：2025年10月19日</p>
+    <p>地点：宣城市敬亭湖宾馆/宣城市敬亭山研学基地</p>
+    <a href="https://www.qiaoandyilin.com">点击进入我们的网站</a>
+
+    <script>
+        // 首先，您需要通过您的后端服务器获取签名等信息（这一步需要公众号的AppID和AppSecret）
+        // 假设您有一个后端API：/api/wechat-signature?url=当前页面URL
+        axios.get('/api/wechat-signature?url=' + encodeURIComponent(window.location.href.split('#')[0]))
+          .then(function (response) {
+            var data = response.data;
+
+            wx.config({
+                debug: false, // 上线时改为false
+                appId: data.appId,
+                timestamp: data.timestamp,
+                nonceStr: data.nonceStr,
+                signature: data.signature,
+                jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData']
+            });
+
+            wx.ready(function () {
+                // 自定义“分享给朋友”及“分享到QQ”
+                wx.updateAppMessageShareData({
+                    title: '徐峤与曹怡琳的森林派对 - 婚礼邀请', // 分享标题
+                    desc: '诚挚邀请您于2025年10月19日来见证我们的幸福时刻', // 分享描述
+                    link: window.location.href, // 分享链接
+                    imgUrl: 'https://www.qiaoandyilin.com/images/weixin-share-thumbnail.jpg', // 分享图标（300x300像素为宜）
+                    success: function () {
+                        // 设置成功
+                    }
+                });
+
+                // 自定义“分享到朋友圈”及“分享到QQ空间”
+                wx.updateTimelineShareData({
+                    title: '来参加徐峤与曹怡琳的婚礼吧！', // 朋友圈分享只显示标题
+                    link: window.location.href,
+                    imgUrl: 'https://www.qiaoandyilin.com/images/weixin-share-thumbnail.jpg',
+                    success: function () {
+                        // 设置成功
+                    }
+                });
+            });
+          });
+    </script>
+</body>
+</html>
