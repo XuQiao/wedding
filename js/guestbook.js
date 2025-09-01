@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
     textarea.addEventListener('input', function()  {
         const text = textarea.value;
         const count = text.length
-        console.log(count)
 
         if (count > maxCharacters) {
             textarea.value = text.slice(0,maxCharacters)
