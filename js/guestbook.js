@@ -2,6 +2,7 @@
 const { GH_TOKEN } = window._githubConfig;
 const repoOwner = "xuqiao"
 const repoName = "wedding"
+const maxCharacters = 200
 
 document.addEventListener('DOMContentLoaded', function() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             item.classList.add('active');
         }
     });
+    
     const messagesContainer = document.getElementById('messages');
     const form = document.getElementById('messageForm');
     async function loadMessages() {
@@ -91,6 +93,19 @@ document.addEventListener('DOMContentLoaded', function() {
         return await response.json();
     }
     
+        
+    const textarea = document.getElementById('message')
+    textarea.addEventListener('input', function()  {
+        const text = textarea.value;
+        const count = text.length
+        console.log(count)
+
+        if (count > maxCharacters) {
+            textarea.value = text.slice(0,maxCharacters)
+            alert('输入字数已达上限')
+        }
+    })
+
     // 提交留言
     form.addEventListener('submit', function(e) {
         e.preventDefault();
