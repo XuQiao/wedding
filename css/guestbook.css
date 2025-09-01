@@ -185,3 +185,7 @@ button[type="submit"]:hover {
 body {
     padding-bottom: 60px;
 }
+
+.greeting {
+    font-family: 'Courier';
+}
