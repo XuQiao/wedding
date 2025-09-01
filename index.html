@@ -11,22 +11,21 @@
     <title>诚挚邀请您参加我们的婚礼</title> <!-- 这是默认标题 -->
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.cn/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/story.css">
 </head>
 
 <body>
     <script>
-// 当前页面高亮
-document.addEventListener('DOMContentLoaded', function() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-item').forEach(item => {
-        const link = item.getAttribute('href');
-        if (link === currentPage) {
-            item.classList.add('active');
-        }
-    });
-});
-</script>
+        // 当前页面高亮
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-item').forEach(item => {
+                const link = item.getAttribute('href');
+                if (link === currentPage) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
     <!-- 封面页 -->
     <section class="cover">
         <div class="content">
@@ -59,9 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
         <div class="story-container">
-            <header>
-                <h1>狐狸先生与兔子小姐的故事</h1>
-            </header>
+            <h1>狐狸先生与兔子小姐的故事</h1>
 
             <div class="story-chapters">
                 <section class="chapter">
