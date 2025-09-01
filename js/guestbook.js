@@ -1,5 +1,5 @@
 // 当前页面高亮
-const { GH_TOKEN } = window._githubConfig;
+const { GH_TOKEN } = window._Config;
 const repoOwner = "xuqiao"
 const repoName = "wedding"
 const maxCharacters = 200

@@ -1,8 +1,6 @@
 // 这个文件会在部署时被自动生成
-window._githubConfig = {
-  GH_TOKEN: /* GH_TOKEN */
-};
-window._wechatConfig = {
+window._Config = {
+  GH_TOKEN: /* GH_TOKEN */,
   APP_ID: /* APP_ID */,
   APP_SECRET: /* APP_SECRET */
 };

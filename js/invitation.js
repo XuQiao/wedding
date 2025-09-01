@@ -1,5 +1,5 @@
 // 注意：这里从环境变量读取，避免代码泄露密钥！
-const {APP_ID, APP_SECRET} = window._wechatConfig;
+const {APP_ID, APP_SECRET} = window._Config;
 
 // 全局缓存变量（云函数实例复用，缓存有效）
 let cachedAccessToken = null;
