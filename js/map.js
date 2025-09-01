@@ -20,21 +20,24 @@ function initMap() {
     });
 
     // 添加婚礼场地标记
-    const venueMarker = new AMap.Marker({
+    const marker = {
+        "banquet": new AMap.Marker({
         position: [118.737997,30.972957],
         map: map,
         icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png',
         title: '婚礼主场地 -- 研学基地内部草坪'
-    });
-    const banquetMarker = new AMap.Marker({
+        }),
+        "venue": new AMap.Marker({
         position: [118.740218,30.97028],
         map: map,
         icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png',
         title: '午宴场地 -- 敬亭湖宾馆通和西厅'
-    });
+        })
+    }
 
     // 信息窗口内容
-    const infoWindow = new AMap.InfoWindow({
+    const infoWindow = {
+        "banquet": new AMap.InfoWindow({
         content: `<div class="map-infowindow">
                     <h3>狐狸先生 & 兔子小姐</h3>
                     <p>森林主题婚礼庆典</p>
@@ -42,8 +45,8 @@ function initMap() {
                     <img src="images/wedding-icon.png" alt="婚礼图标">
                   </div>`,
         offset: new AMap.Pixel(0, -30)
-    });
-    const infoWindow1 = new AMap.InfoWindow({
+    }),
+        "venue": new AMap.InfoWindow({
         content: `<div class="map-infowindow">
                     <h3>狐狸先生 & 兔子小姐</h3>
                     <p>午宴</p>
@@ -51,32 +54,34 @@ function initMap() {
                     <img src="images/wedding-icon.png" alt="婚礼图标">
                   </div>`,
         offset: new AMap.Pixel(0, -30)
-    });
+        })
+    }
 
     // 点击标记显示信息窗口
-    venueMarker.on('click', function() {
-        infoWindow.open(map, venueMarker.getPosition());
-    });
-
+    Object.entries(marker).forEach(([key, value]) => {
+        value.on('click', function() {
+            infoWindow[key].open(map, item.getPosition());
+        })
+    })
+    
+/*
     banquetMarker.on('click', function() {
         infoWindow1.open(map, banquetMarker.getPosition());
     });
-
+*/
     // POI点交互
     document.querySelectorAll('.poi-item').forEach(item => {
         item.addEventListener('click', function() {
             const lng = parseFloat(this.dataset.lng);
             const lat = parseFloat(this.dataset.lat);
             map.setCenter([lng, lat]);
-            venueMarker.setPosition([lng, lat]);
-            banquetMarker.setPosition([lng, lat]);
-            infoWindow.open(map, [lng, lat]);
-            infoWindow1.open(map, [lng, lat]);
+            marker[this.dataset.type].setPosition([lng, lat]);
+            infoWindow[this.dataset.type].open(map, [lng, lat]);
         });
     });
 
-
     // 导航功能
+    /*
     document.getElementById('navigation-btn').addEventListener('click', function() {
         AMap.plugin('AMap.Transfer', function() {
             const transfer = new AMap.Transfer({
@@ -89,7 +94,7 @@ function initMap() {
             ]);
         });
     });
-
+    */
     // 出租车功能
     /*
     document.getElementById('taxi-btn').addEventListener('click', function() {

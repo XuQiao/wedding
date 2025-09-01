@@ -2,3 +2,7 @@
 window._githubConfig = {
   GH_TOKEN: /* GH_TOKEN */
 };
+window._wechatConfig = {
+  APP_ID: /* APP_ID */,
+  APP_SECRET: /* APP_SECRET */
+};
