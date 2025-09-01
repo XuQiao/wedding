@@ -1,22 +1,29 @@
-const sha1 = require('sha1');
-
 // 注意：这里从环境变量读取，避免代码泄露密钥！
 const {APP_ID, APP_SECRET} = window._wechatConfig;
 
-console.log(APP_ID)
 // 全局缓存变量（云函数实例复用，缓存有效）
 let cachedAccessToken = null;
 let cachedJsApiTicket = null;
 let tokenExpiresTime = 0;
 let ticketExpiresTime = 0;
 
+const headers = {
+    'Access-Control-Allow-Origin': '*', // 允许你的GitHub Pages域名访问，也可以指定为'https://yourgithubname.github.io'
+    'Access-Control-Allow-Headers': 'content-type',
+    'Content-Type': 'application/json'
+};
+
 async function getAccessToken() {
+    console.log("getAccessToken")
+
   const now = Date.now();
   if (cachedAccessToken && now < tokenExpiresTime - 5 * 60 * 1000) {
     return cachedAccessToken;
   }
+  console.log(cachedAccessToken)
   const url = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APP_ID}&secret=${APP_SECRET}`;
-  const response = await fetch(url);
+  console.log(url, headers)
+  const response = await fetch(url, {headers: headers});
   const data = await response.json();
 
   if (data.errcode) {
@@ -28,13 +35,15 @@ async function getAccessToken() {
 }
 
 async function getJsApiTicket() {
+    console.log("getJsApiTicket")
   const now = Date.now();
   if (cachedJsApiTicket && now < ticketExpiresTime - 5 * 60 * 1000) {
     return cachedJsApiTicket;
   }
   const accessToken = await getAccessToken();
+  console.log(accessToken)
   const url = `https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=${accessToken}&type=jsapi`;
-  const response = await fetch(url);
+  const response = await fetch(url, {headers: headers});
   const data = await response.json();
 
   if (data.errcode !== 0) {
@@ -51,12 +60,6 @@ function createNonceStr() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    const headers = {
-        'Access-Control-Allow-Origin': '*', // 允许你的GitHub Pages域名访问，也可以指定为'https://yourgithubname.github.io'
-        'Access-Control-Allow-Headers': 'content-type',
-        'Content-Type': 'application/json'
-    };
-
 
     try {
         const jsapiTicket = getJsApiTicket();
@@ -69,10 +72,10 @@ document.addEventListener('DOMContentLoaded', function() {
             statusCode: 200,
             headers,
             body: JSON.stringify({
-            appId: APP_ID,
-            timestamp: timestamp,
-            nonceStr: nonceStr,
-            signature: signature
+                appId: APP_ID,
+                timestamp: timestamp,
+                nonceStr: nonceStr,
+                signature: signature
             })
         };
     } catch (error) {
