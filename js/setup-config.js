@@ -7,7 +7,7 @@ const config = {
   APP_ID: process.env.APP_ID,
   APP_SECRET: process.env.APP_SECRET
 };
-
+console.log(config)
 // 读取模板文件
 const templatePath = path.join(__dirname, '../js/config.js.template');
 let template = fs.readFileSync(templatePath, 'utf8');
@@ -16,6 +16,7 @@ let template = fs.readFileSync(templatePath, 'utf8');
 template = template.replace('/* GH_TOKEN */', `"${config.GH_TOKEN}"`)
 template = template.replace('/* APP_ID */', `"${config.APP_ID}"`)
 template = template.replace('/* APP_SECRET */', `"${config.APP_SECRET}"`)
+console.log(template)
 
 // 写入实际配置文件
 const outputPath = path.join(__dirname, '../js/config.js');
