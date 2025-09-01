@@ -22,4 +22,4 @@ console.log(template)
 const outputPath = path.join(__dirname, '../js/config.js');
 fs.writeFileSync(outputPath, template);
 
-console.log('Configuration file generated successfully');
+console.log('Configuration file generated successfully', outputPath);
