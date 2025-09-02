@@ -1,5 +1,5 @@
 // 注意：这里从环境变量读取，避免代码泄露密钥！
-const {APP_ID, APP_SECRET} = window._Config;
+const {APP_ID, APP_TOKEN} = window._Config;
 
 // 全局缓存变量（云函数实例复用，缓存有效）
 let cachedAccessToken = null;
@@ -21,7 +21,7 @@ async function getAccessToken() {
     return cachedAccessToken;
   }
   console.log(cachedAccessToken)
-  const url = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APP_ID}&secret=${APP_SECRET}`;
+  const url = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APP_ID}&secret=${APP_TOKEN}`;
   console.log(url, headers)
   const response = await fetch(url, {headers: headers});
   const data = await response.json();

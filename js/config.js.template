@@ -2,5 +2,5 @@
 window._Config = {
   GH_TOKEN: /* GH_TOKEN */,
   APP_ID: /* APP_ID */,
-  APP_SECRET: /* APP_SECRET */
+  APP_TOKEN: /* APP_TOKEN */
 };
