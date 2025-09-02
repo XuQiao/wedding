@@ -29,6 +29,7 @@ jobs:
         run: npm run build
         env:
           # 这里设置的环境变量会在构建时被注入！
+          VITE_GH_TOKEN: ${{ secrets.PAT }}
           VITE_APP_ID: ${{ secrets.APP_ID }}
           VITE_APP_TOKEN: ${{ secrets.APP_TOKEN }}
 
