@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path'
 
 export default defineConfig({
-  base: '/wedding', // 替换为你的仓库名
+  base: './', // 替换为你的仓库名
   build: {
     outDir: './dist',
     sourcemap: false,
