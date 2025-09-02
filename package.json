@@ -8,5 +8,18 @@
   },
   "devDependencies": {
     "vite": "^5.0.0"
-  }
+  },
+  "description": "",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XuQiao/wedding.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XuQiao/wedding/issues"
+  },
+  "homepage": "https://github.com/XuQiao/wedding#readme"
 }
