@@ -22,6 +22,6 @@ const outputPath = path.join(__dirname, '../js/config.js');
 fs.writeFileSync(outputPath, template);
 
 console.log('Configuration file generated successfully', template, outputPath);
-const noJekyllFilePath = path.join(__dirname, '..', 'dist', '.nojekyll');
+const noJekyllFilePath = path.join(__dirname, '..', '.nojekyll');
 fs.writeFileSync(noJekyllFilePath, '');
 console.log('.nojekyll 文件已创建');
