@@ -189,3 +189,9 @@ body {
 .greeting {
     font-family: 'Courier';
 }
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #7f8c8d;
+}

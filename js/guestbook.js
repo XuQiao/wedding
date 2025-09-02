@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             const issues = await response.json();
-            messagesContainer.innerHTML = '';
+            messagesContainer.innerHTML = '<div class="loading">加载消息中...</div>';
   
             
             issues.forEach(function(issue) {
@@ -73,6 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 发布留言到GitHub Issues
     async function postMessage(newMessage) {
+        // 模拟API请求延迟
+        await wait(800);
         const { name, message, timestamp } = newMessage;
 
         const title = `来自${name}的祝福`;
@@ -97,7 +99,9 @@ document.addEventListener('DOMContentLoaded', function() {
         else {
             alert('提交成功，刷新中。。。')
         }
-
+        // 刷新显示
+        await loadMessages();
+        
         await wait(5000)
 
         return await response.json();
@@ -116,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     // 提交留言
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         const name = document.getElementById('name').value.trim();
@@ -131,18 +135,27 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         // 获取现有留言并添加新留言
-        postMessage(newMessage)
-
-        // 刷新显示
-        loadMessages();
+        const reponse = await postMessage(newMessage)
+        const submitBtn = messageForm.querySelector('button');
+        submitBtn.disabled = true;
+        submitBtn.textContent = '提交中...';
+        if (response.ok) {
+            // 清空表单
+            messageForm.reset();
+        } else {
+            showAlert('提交失败，请重试', 'error');
+        }
         
+        // 恢复提交按钮
+        submitBtn.disabled = false;
+        submitBtn.textContent = '提交消息';
+
         // 清空表单
         form.reset();
         
         // 显示成功提示
         alert('感谢您的祝福！');
     });
-    
-    // 初始加载留言
-    loadMessages();
 });
+// 页面加载时初始化
+document.addEventListener('DOMContentLoaded', loadMessages);
