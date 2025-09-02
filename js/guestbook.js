@@ -4,6 +4,7 @@
 console.log(import.meta.env)
 const repoOwner = "xuqiao"
 const repoName = "wedding"
+console.log(repoOwner, repoName)
 const maxCharacters = 200
 
 document.addEventListener('DOMContentLoaded', function() {
