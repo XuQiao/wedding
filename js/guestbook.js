@@ -1,10 +1,8 @@
 // 当前页面高亮
 // const { GH_TOKEN } = window.APP_Config;
-// const GH_TOKEN = import.meta.env.VITE_GH_TOKEN
-console.log(import.meta.env)
+const GH_TOKEN = "github_pat_" + import.meta.env.VITE_GH_TOKEN
 const repoOwner = "xuqiao"
 const repoName = "wedding"
-console.log(repoOwner, repoName)
 const maxCharacters = 200
 
 document.addEventListener('DOMContentLoaded', function() {
