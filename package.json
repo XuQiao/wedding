@@ -7,7 +7,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.0.0"
+    "vite": "^7.1.4"
   },
   "description": "",
   "main": "vite.config.js",
@@ -21,5 +21,13 @@
   "bugs": {
     "url": "https://github.com/XuQiao/wedding/issues"
   },
-  "homepage": "https://github.com/XuQiao/wedding#readme"
+  "homepage": "https://github.com/XuQiao/wedding#readme",
+  "dependencies": {
+    "esbuild": "^0.25.9",
+    "nanoid": "^3.3.11",
+    "picocolors": "^1.1.1",
+    "postcss": "^8.5.6",
+    "rollup": "^4.50.0",
+    "source-map-js": "^1.2.1"
+  }
 }

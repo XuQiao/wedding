@@ -14,19 +14,6 @@
 </head>
 
 <body>
-    <script>
-        // 当前页面高亮
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            document.querySelectorAll('.nav-item').forEach(item => {
-                const link = item.getAttribute('href');
-                if (link === currentPage) {
-                    item.classList.add('active');
-                }
-            });
-        });
-    </script>
-    <!-- 封面页 -->
     <section class="cover">
         <div class="content">
             <h2>以爱之名，邀您共赴</h2>
