@@ -1,5 +1,5 @@
 // 这个文件会在部署时被自动生成
-window._Config = {
+window.APP_Config = {
   GH_TOKEN: /* GH_TOKEN */,
   APP_ID: /* APP_ID */,
   APP_TOKEN: /* APP_TOKEN */
