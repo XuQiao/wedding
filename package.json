@@ -11,6 +11,7 @@
   },
   "description": "",
   "main": "vite.config.js",
+  "type": "module",
   "module": "../node_modules",
   "repository": {
     "type": "git",
