@@ -5,6 +5,10 @@ const repoOwner = "xuqiao"
 const repoName = "wedding"
 const maxCharacters = 200
 
+function wait(ms) {
+    return new Promise(resolve => setTimeout(() => resolve(), ms));
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-item').forEach(item => {
@@ -90,7 +94,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+        else {
+            alert('提交成功，刷新中。。。')
+        }
+
+        await wait(5000)
+
         return await response.json();
     }
     
@@ -123,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 获取现有留言并添加新留言
         postMessage(newMessage)
-        
+
         // 刷新显示
         loadMessages();
         
