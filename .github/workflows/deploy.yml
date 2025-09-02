@@ -5,6 +5,42 @@ on:
     branches: [ main ]
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with environment variables
+        run: npm run build
+        env:
+          # 这里设置的环境变量会在构建时被注入！
+          VITE_GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          VITE_APP_ID: ${{ secrets.APP_ID }}
+          VITE_APP_SECRET: ${{ secrets.APP_SECRET }}
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '.'
+
+
   deploy:
     runs-on: ubuntu-latest
     permissions:
@@ -15,21 +51,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Setup config
-        run: |
-          GH_TOKEN=${{ secrets.PAT }} \
-          APP_ID=${{ secrets.APP_ID }} \
-          APP_TOKEN=${{ secrets.APP_TOKEN }} \
-          node js/setup-config.js
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4 
