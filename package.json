@@ -11,6 +11,8 @@
   },
   "description": "",
   "main": "vite.config.js",
+  "type": "module",
+  "module": "../node_modules",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/XuQiao/wedding.git"
