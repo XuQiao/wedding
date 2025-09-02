@@ -21,6 +21,8 @@ jobs:
       - name: Setup config
         run: |
           GH_TOKEN=${{ secrets.PAT }} \
+          APP_ID=${{ secrets.APP_ID }} \
+          APP_TOKEN=${{ secrets.APP_TOKEN }} \
           node js/setup-config.js
 
       - name: Upload artifact

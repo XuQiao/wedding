@@ -4,8 +4,8 @@ const path = require('path');
 
 const config = {
   GH_TOKEN: process.env.GH_TOKEN,
-  //APP_ID: process.env.APP_ID,
-  //APP_TOKEN: process.env.APP_TOKEN
+  APP_ID: process.env.APP_ID,
+  APP_TOKEN: process.env.APP_TOKEN
 };
 
 // 读取模板文件
@@ -14,8 +14,8 @@ let template = fs.readFileSync(templatePath, 'utf8');
 
 // 替换占位符
 template = template.replace('/* GH_TOKEN */', `"${config.GH_TOKEN}"`)
-//template = template.replace('/* APP_ID */', `"${config.APP_ID}"`)
-//template = template.replace('/* APP_TOKEN */', `"${config.APP_TOKEN}"`)
+template = template.replace('/* APP_ID */', `"${config.APP_ID}"`)
+template = template.replace('/* APP_TOKEN */', `"${config.APP_TOKEN}"`)
 
 // 写入实际配置文件
 const outputPath = path.join(__dirname, '../js/config.js');
