@@ -21,7 +21,7 @@ template = template.replace('/* APP_TOKEN */', `"${config.APP_TOKEN}"`)
 const outputPath = path.join(__dirname, '../js/config.js');
 fs.writeFileSync(outputPath, template);
 
-console.log('Configuration file generated successfully', template, outputPath);
+console.log('Configuration file generated successfully', __dirname, template, config, outputPath);
 //const noJekyllFilePath = path.join(__dirname, '..', '.nojekyll');
 //fs.writeFileSync(noJekyllFilePath, '');
 //console.log('.nojekyll 文件已创建');
