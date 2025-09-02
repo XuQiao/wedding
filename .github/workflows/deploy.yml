@@ -16,13 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Debug environment variables
-        run: |
-          echo "VITE_GH_TOKEN is set: $(if [ -n \"$VITE_GH_TOKEN\" ]; then echo 'YES'; else echo 'NO'; fi)"
-          echo "Token length: ${#VITE_GH_TOKEN}"
-        env:
-          VITE_GH_TOKEN: ${{ secrets.PAT }}
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -36,7 +29,6 @@ jobs:
         run: npm run build
         env:
           # 这里设置的环境变量会在构建时被注入！
-          VITE_GH_TOKEN: ${{ secrets.PAT }}
           VITE_APP_ID: ${{ secrets.APP_ID }}
           VITE_APP_TOKEN: ${{ secrets.APP_TOKEN }}
 
