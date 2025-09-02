@@ -34,7 +34,17 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
-
+      - name: Debug - Check filesystem
+        run: |
+          echo "当前工作目录:"
+          pwd
+          echo "所有文件:"
+          ls -la
+          echo "Dist 目录详细内容:"
+          find dist/ -type f -name "*" | head -20
+          echo "文件大小:"
+          du -sh dist/ || echo "无法计算大小"
+          [ -f "dist/js/config.js" ] && echo "✓ config.js 存在" || echo "✗ config.js 不存在"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
