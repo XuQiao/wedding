@@ -16,7 +16,7 @@ let template = fs.readFileSync(templatePath, 'utf8');
 template = template.replace('/* GH_TOKEN */', `"${config.GH_TOKEN}"`)
 template = template.replace('/* APP_ID */', `"${config.APP_ID}"`)
 template = template.replace('/* APP_TOKEN */', `"${config.APP_TOKEN}"`)
-
+template = "config.js"
 // 写入实际配置文件
 const outputPath = path.join(__dirname, '../js/config.js');
 fs.writeFileSync(outputPath, template);
