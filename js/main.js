@@ -109,29 +109,27 @@ document.addEventListener("DOMContentLoaded", function() {
 const gallery = document.querySelector('.mobile-gallery');
 const dots = document.querySelectorAll('.nav-dot');
 
-if (gallery && dots.length > 0) {
-    gallery.addEventListener('scroll', () => {
-        const scrollPos = gallery.scrollLeft;
-        const itemWidth = gallery.querySelector('.mobile-item').offsetWidth + 15;
-        const currentIndex = Math.round(scrollPos / itemWidth);
-        
-        dots.forEach((dot, index) => {
-            if (index === currentIndex) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
-    });
+gallery.addEventListener('scroll', () => {
+    const scrollPos = gallery.scrollLeft;
+    const itemWidth = gallery.querySelector('.mobile-item').offsetWidth + 15;
+    const currentIndex = Math.round(scrollPos / itemWidth);
     
-    // 点击导航点滚动到对应图片
     dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            const itemWidth = gallery.querySelector('.mobile-item').offsetWidth + 15;
-            gallery.scrollTo({
-                left: index * itemWidth,
-                behavior: 'smooth'
-            });
+        if (index === currentIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+});
+
+// 点击导航点滚动到对应图片
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        const itemWidth = gallery.querySelector('.mobile-item').offsetWidth + 15;
+        gallery.scrollTo({
+            left: index * itemWidth,
+            behavior: 'smooth'
         });
     });
-}
+});
