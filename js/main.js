@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
 const gallery = document.querySelector('.mobile-gallery');
 const dots = document.querySelectorAll('.nav-dot');
 
-if (gallery) {
+if (gallery && dots.length > 0) {
     gallery.addEventListener('scroll', () => {
         const scrollPos = gallery.scrollLeft;
         const itemWidth = gallery.querySelector('.mobile-item').offsetWidth + 15;

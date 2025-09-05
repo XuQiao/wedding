@@ -150,6 +150,7 @@ body {
     margin: 20px auto;
     display: block;
 }
+
 /* 桌面端网格布局 */
 .photo-gallery {
     display: grid;
@@ -278,7 +279,7 @@ body {
         font-size: 1rem;
     }
 }
-
+        
 
 /* 图片动画效果 */
 @keyframes fadeInScale {
