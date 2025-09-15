@@ -30,12 +30,13 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function() {
     const bgMusic = document.getElementById('bgMusic');
     const musicControl = document.getElementById('musicControl');
-    let isMusicPlaying = true;
+    let isMusicPlaying = false;
 
     // 音乐控制功能
     function setupMusicControl() {
         // 尝试自动播放音乐
         function tryPlayMusic() {
+            console.log('enter tryplay');
             if (!isMusicPlaying) {
                 bgMusic.volume = 0.3;
                 bgMusic.play().then(() => {
