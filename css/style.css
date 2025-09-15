@@ -13,7 +13,7 @@ body {
 
 /* 封面页样式 */
 .cover {
-    min-height: 100vh;
+    min-height: 120vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,7 +28,7 @@ body {
 
 /* 信息页样式 */
 .info {
-    min-height: 100vh;
+    min-height: 120vh;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
