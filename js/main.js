@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function() {
     const bgMusic = document.getElementById('bgMusic');
     const musicControl = document.getElementById('musicControl');
-    let isMusicPlaying = false;
+    let isMusicPlaying = True;
 
     // 音乐控制功能
     function setupMusicControl() {
