@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         }
+        tryPlayMusic()
         
         // 点击音乐控制按钮
         musicControl.addEventListener('click', function(e) {

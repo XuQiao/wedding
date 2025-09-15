@@ -24,7 +24,6 @@ async function loadMessages() {
         const issues = await response.json();
         messagesContainer.innerHTML = '';
         
-        
         issues.forEach(function(issue) {
             // 从issue标题提取作者名
             const authorMatch = issue.title.match(/来自(.+)的祝福/);
@@ -65,9 +64,9 @@ async function loadMessages() {
 // 发布留言到GitHub Issues
 async function postMessage(newMessage) {
     const { name, message, timestamp } = newMessage;
-
+    const time = new Date(timestamp).toLocaleString('zh-CN');
     const title = `来自${name}的祝福`;
-    const body = `${message}\n\n提交时间: ${new Date(timestamp).toLocaleString('zh-CN')}`;
+    const body = `${message}\n\n提交时间: ${time}`;
     const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/issues`, {
         method: 'POST',
         headers: {
@@ -86,7 +85,7 @@ async function postMessage(newMessage) {
     messageItem.innerHTML = `
         <h4>${name}</h4>
         <p>${message}</p>
-        <small>${timestamp}</small>
+        <small>${time}</small>
     `;
     messagesContainer.appendChild(messageItem);
     
@@ -150,6 +149,7 @@ form.addEventListener('submit', async function(e) {
     alert('感谢您的祝福！');
 });
 document.addEventListener('DOMContentLoaded', loadMessages)
+
 document.addEventListener('DOMContentLoaded', function() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-item').forEach(item => {
