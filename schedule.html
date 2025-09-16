@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- link href="https://fonts.googleapis.cn/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet"-->
 </head>
+
 <body>
     <div class="party-container">
     <div class="activity">
@@ -72,19 +73,17 @@
                 <p>内容: 品尝各种森林主题美食和饮品</p>
             </div>
         </div>
-
-        
     </div>
     <!-- 底部导航栏 -->
-    <nav class="bottom-nav">
+    <div class="bottom-nav">
         <a href="index.html" class="nav-item">
             <div class="nav-icon">🏠</div>
             <div class="nav-text">邀请函</div>
         </a>
-        <!--a href="story.html" class="nav-item">
+        <a href="story.html" class="nav-item">
             <div class="nav-icon">📖</div>
             <div class="nav-text">故事</div>
-        </a-->
+        </a>
         <a href="map.html" class="nav-item">
             <div class="nav-icon">🗺️</div>
             <div class="nav-text">地图</div>
@@ -97,6 +96,15 @@
             <div class="nav-icon">📝</div>
             <div class="nav-text">留言</div>
         </a>
-    </nav>
+    </div>
 </body>
+<script>
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-item').forEach(item => {
+        const link = item.getAttribute('href');
+        if (link === currentPage) {
+            item.classList.add('active');
+        }
+    });
+</script>
 </html>

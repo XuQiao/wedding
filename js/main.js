@@ -21,14 +21,25 @@ function updateCountdown() {
 
 // 页面加载时初始化
 document.addEventListener("DOMContentLoaded", function() {
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-    
-    // 其他页面交互可以在这里添加
-});
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-item').forEach(item => {
+        const link = item.getAttribute('href');
+        if (link === currentPage) {
+            item.classList.add('active');
+        }
+    });
 
-document.addEventListener('DOMContentLoaded', function() {
+    // 倒计时功能（首页使用）
+    if (document.getElementById("countdown-timer")) {
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
+    // 其他页面交互可以在这里添加
+
     const bgMusic = document.getElementById('bgMusic');
+    if (bgMusic) {
+        bgMusic.volume = 0.3; // 设置为30%音量
+    }
     const musicControl = document.getElementById('musicControl');
     let isMusicPlaying = false;
 
@@ -93,20 +104,7 @@ function toggleMusic() {
     }
 }
 
-// 自动降低音乐音量
-document.addEventListener("DOMContentLoaded", function() {
-    const music = document.getElementById("bg-music");
-    if (music) {
-        music.volume = 0.3; // 设置为30%音量
-    }
-    
-    // 倒计时功能（首页使用）
-    if (document.getElementById("countdown-timer")) {
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    }
-});
-
+/*
 // 简单的导航指示器逻辑
 const gallery = document.querySelector('.mobile-gallery');
 const dots = document.querySelectorAll('.nav-dot');
@@ -135,3 +133,4 @@ dots.forEach((dot, index) => {
         });
     });
 });
+*/

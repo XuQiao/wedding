@@ -38,9 +38,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-decoration: none;
-    color: #5a3e2b;
+    color: #d6404d;
     flex: 1;
+    height: 140%;
+}
+
+.nav-item.active {
+    background-color: rgba(207, 49, 49, 0.281);
+    height: 140%;
 }
 
 .nav-icon {
@@ -359,7 +366,7 @@ body {
 }
 
 .nav-link {
-    color: #555 !important;
+    color: #e04141 !important;
     font-weight: 500;
     margin: 0 5px;
     padding: 8px 15px !important;
