@@ -409,11 +409,12 @@ body {
 
 /* 章节图片 */
 .chapter img {
-    width: 40%;
+    width: 80%;
     height: 40%;
     border-radius: 10px;
-    margin: 15px 0;
-    position: center;
+    display: flex;
+    margin: 15px 15px;
+    position: relative;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     border: 2px solid #f8f5f0;
