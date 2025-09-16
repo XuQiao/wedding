@@ -13,6 +13,7 @@
 
 </head>
 <body>
+    <section class="map-content">
     <div class="poi-list">
         <h3>重要地点</h3>
         <div class="poi-item" data-lng="118.737997" data-lat="30.972957" data-type="banquet">
@@ -23,11 +24,12 @@
             </div>
         </div>
         <div class="poi-item" data-lng="118.740218" data-lat="30.97028" data-type="venue">
-            <div class="poi-icon">🏨</div>
+            <div class="poi-icon"></div>
             <div class="poi-detail">
-                <h4>敬亭湖宾馆</h4>
+                <h4>敬亭湖宾馆🏠</h4>
                 <p>午宴场地</p>
             </div>
+        </div>
     </div>
     <div class="transportation">
         <h3>交通方式</h3>
@@ -41,13 +43,13 @@
         </div>
         <div class="transport-item">
             <h4>🚌 公共交通</h4>
-            <p>乘坐1路公交车至"敬亭山东大门"站下车，步行15分钟</p>
+            <p>乘坐1,3,4,5,16路公交车至"敬亭山东大门"站下车，步行15分钟</p>
             <p>还可以乘坐6路公交车至"敬亭湖宾馆"站下车，从宾馆东侧桥上步行12分钟</p>
     </div>
     
-    <div id="map-container"></div>
+    <div id="map-container">
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=7b8ae5882b32135ac7e6e3988387ec8b"></script>
-
+    </div>
     <!--div class="location-info">
         <h2>宣城市敬亭湖宾馆</h2>
         <p><span>📍</span> 安徽省宣城市宣州区敬亭湖度假区</p>
@@ -56,7 +58,7 @@
             <button id="taxi-btn">呼叫出租车</button>
         </div>
     </div-->
-    
+    </section>
     
     <!-- 底部导航栏 -->
     <nav class="bottom-nav">

@@ -50,11 +50,18 @@ body {
     padding-bottom: 100px; /* 等于导航栏高度 */
 }
 
+.party-container {
+    padding-bottom: 50px;
+}
+
 .party-intro {
-    margin: 0 auto;
+    padding: 30px 20px;
+    margin: 1 auto;
     max-width: 800px;
     box-shadow: 0 5px 15px rgba(139, 90, 43, 0.1);
     position: relative;
+    font-size: 10px;
+    font-family:'Courier New', Courier, monospace;
     overflow: hidden;
 }
 
@@ -115,6 +122,10 @@ body {
     margin: 15px 0;
     text-align: justify;
     padding: 0 10px;
+}
+
+td {
+    padding-left: 2em;
 }
 
 /* 装饰元素 */
