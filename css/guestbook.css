@@ -9,6 +9,10 @@ body {
     margin: 0 auto;
 }
 
+guestbook-container {
+    padding-bottom: 100px; /* 等于导航栏高度 */
+}
+
 /* 表单样式 */
 #messageForm {
     background: white;

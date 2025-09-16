@@ -11,20 +11,7 @@ body {
     background-color: #f8f5f0;
 }
 
-/* 封面页样式 */
-.cover {
-    min-height: 160vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(rgba(255, 255, 255, 0.7), 
-                url('../images/couple.jpg')) no-repeat center center;
-    background-size: cover;
-    color: #5a3e2b;
-}
+
 
 /* 信息页样式 */
 .info {
@@ -90,14 +77,10 @@ body {
     background-color: rgba(139, 90, 43, 0.2);
 }
 
-/* 内容样式 */
-.content {
-    max-width: 90%;
-    margin: 0 auto;
-}
 /* 首页图片样式优化 */
 .cover {
     position: relative;
+    min-height: 160vh;
     height: 160vh;
     display: flex;
     flex-direction: column;
@@ -106,7 +89,16 @@ body {
     text-align: center;
     padding: 20px;
     background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+    background-size: cover;
+    color: #5a3e2b;
     overflow: hidden;
+}
+
+/* 内容样式 */
+.content {
+    max-width: 90%;
+    min-height: 160vh;
+    margin: 0 auto;
 }
 
 /* 背景图片容器 */

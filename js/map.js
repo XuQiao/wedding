@@ -39,19 +39,17 @@ function initMap() {
     const infoWindow = {
         "banquet": new AMap.InfoWindow({
         content: `<div class="map-infowindow">
-                    <h3>狐狸先生 & 兔子小姐</h3>
-                    <p>森林主题婚礼庆典</p>
-                    <p>2025年10月19日 11:08</p>
-                    <img src="images/wedding-icon.png" alt="婚礼图标">
+                    <h3>仪式地点</h3>
+                    <p>2025年10月19日 10:28</p>
+                    <img src="images/wedding-icon.png">
                   </div>`,
         offset: new AMap.Pixel(0, -30)
     }),
         "venue": new AMap.InfoWindow({
         content: `<div class="map-infowindow">
-                    <h3>狐狸先生 & 兔子小姐</h3>
-                    <p>午宴</p>
+                    <p>午宴地点</p>
                     <p>2025年10月19日 12:08</p>
-                    <img src="images/wedding-icon.png" alt="婚礼图标">
+                    <img src="images/wedding-icon.png">
                   </div>`,
         offset: new AMap.Pixel(0, -30)
         })
