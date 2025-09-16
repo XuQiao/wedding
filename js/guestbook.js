@@ -138,15 +138,16 @@ form.addEventListener('submit', async function(e) {
         alert(response.json);
     }
     
-    // 恢复提交按钮
-    submitBtn.disabled = false;
-    submitBtn.textContent = '提交祝福';
-
     // 清空表单
     form.reset();
     
     // 显示成功提示
     alert('感谢您的祝福！');
+
+    // 恢复提交按钮
+    submitBtn.disabled = false;
+    submitBtn.textContent = '提交祝福';
+
 });
 document.addEventListener('DOMContentLoaded', loadMessages)
 

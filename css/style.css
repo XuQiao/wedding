@@ -5,13 +5,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Noto Serif SC', serif;
-    color: #333;
-    background-color: #f8f5f0;
-}
-
-
 
 /* 信息页样式 */
 .info {
@@ -37,6 +30,7 @@ body {
     justify-content: space-around;
     padding: 10px 0;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
     z-index: 1000;
 }
 
@@ -99,6 +93,7 @@ body {
     max-width: 90%;
     min-height: 160vh;
     margin: 0 auto;
+    font-family: Georgia, serif;
 }
 
 /* 背景图片容器 */
@@ -318,18 +313,12 @@ body {
     font-weight: bold;
 }
 
-h2 {
-    font-size: 24px;
-    margin-bottom: 40px;
-    font-family: 'Ma Shan Zheng', cursive;
-}
-
 .couple-names {
     margin-bottom: 30px;
 }
 
 .name {
-    font-size: 20px;
+    font-size: 18px;
     margin: 10px 0;
     font-weight: bold;
 }
@@ -339,25 +328,19 @@ h2 {
     margin: 10px 0;
 }
 
-.theme {
-    font-size: 28px;
-    margin-top: 30px;
-    font-family: 'Ma Shan Zheng', cursive;
-    color: #8b5a2b;
-}
-
-.story-content {
+.story-container {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
+    scroll-margin-bottom: 50px;
 }
 
 body {
-    font-family: 'Microsoft YaHei', sans-serif;
-    padding-top: 56px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    padding-top: 0px;
     bottom: 0;
     width: 100%;
     z-index: 1000;
@@ -404,9 +387,9 @@ body {
 
 /* 章节标题 */
 .chapter h2 {
-    font-family: 'Ma Shan Zheng', cursive;
+    font-family: Verdana, Geneva, sans-serif;
     color: #8b5a2b;
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
     margin-bottom: 25px;
     position: relative;
@@ -497,15 +480,6 @@ body {
     color: #6c757d;
 }
 
-body {
-  font-family: 'Noto Serif SC', 'Microsoft YaHei', sans-serif;
-  line-height: 1.6;
-  color: #5a3e2b;
-  background-color: #f8f5f0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
 
 /* 主容器 */
 .container {
@@ -518,7 +492,7 @@ body {
 
 /* 标题样式 */
 h1, h2, h3 {
-  font-family: 'Ma Shan Zheng', cursive;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   color: #8b5a2b;
   text-align: center;
   margin: 20px 0;
@@ -542,7 +516,7 @@ h1:after {
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 h3 {
