@@ -388,7 +388,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(139, 90, 43, 0.1);
     margin-bottom: 40px;
-    position: relative;
+    position: flex;
     overflow: hidden;
 }
 
@@ -416,8 +416,8 @@ body {
 
 /* 章节图片 */
 .chapter img {
-    width: 80%;
-    height: 40%;
+    width: 50%;
+    height: 30%;
     border-radius: 10px;
     display: flex;
     margin: 15px 15px;
@@ -439,30 +439,6 @@ body {
     margin: 15px 0;
     text-align: justify;
     padding: 0 10px;
-}
-
-/* 装饰元素 */
-.chapter::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    width: 60px;
-    height: 60px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23d4a373" d="M50 0 L100 50 L50 100 L0 50 Z"/></svg>') no-repeat;
-    opacity: 0.1;
-    z-index: -1;
-}
-
-.chapter::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    right: -10px;
-    width: 80px;
-    height: 80px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23d4a373" opacity="0.1"/></svg>') no-repeat;
-    z-index: -1;
 }
 
 /* 移动端菜单样式 */
