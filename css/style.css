@@ -46,7 +46,7 @@
 }
 
 .nav-item.active {
-    background-color: rgba(238, 112, 112, 0.281);
+    background-color: rgba(179, 66, 66, 0.281);
     height: 140%;
 }
 
@@ -81,7 +81,7 @@
 /* 首页图片样式优化 */
 .cover {
     position: relative;
-    height: 120vh;
+    min-height: 150vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -376,7 +376,7 @@ body {
 
 .nav-link:hover, .nav-link.active {
     color: white !important;
-    background-color: #d63384;
+    background-color: #f754a5;
 }
 
 /* 章节通用样式 */
