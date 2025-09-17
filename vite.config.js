@@ -9,6 +9,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        story: resolve(__dirname, 'story.html'),
         map: resolve(__dirname, 'map.html'),
         schedule: resolve(__dirname, 'schedule.html'),
         guestbook: resolve(__dirname, 'guestbook.html')
