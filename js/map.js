@@ -3,7 +3,7 @@
 function initMap() {
     // 创建地图实例
     const map = new AMap.Map('map-container', {
-        zoom: 16,
+        zoom: 15,
         center: [118.740218,30.97028],  // 敬亭湖宾馆坐标
         viewMode: '2D',
         pitch: 45
@@ -41,7 +41,7 @@ function initMap() {
         content: `<div class="map-infowindow">
                     <p>仪式地点</p>
                     <p>2025年10月19日 10:28</p>
-                    <img src="/images/wedding-icon.png">
+                    <img src="./images/wedding-icon.png">
                   </div>`,
         offset: new AMap.Pixel(0, -30)
     }),
@@ -49,7 +49,7 @@ function initMap() {
         content: `<div class="map-infowindow">
                     <p>午宴地点</p>
                     <p>2025年10月19日 12:08</p>
-                    <img src="/images/wedding-icon.png">
+                    <img src="./images/wedding-icon.png">
                   </div>`,
         offset: new AMap.Pixel(0, -30)
         })
