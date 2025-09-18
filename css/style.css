@@ -416,7 +416,7 @@ body {
 
 /* 章节图片 */
 .chapter img {
-    width: 50%;
+    width: 80%;
     height: 30%;
     border-radius: 10px;
     display: flex;
