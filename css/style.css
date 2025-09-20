@@ -130,7 +130,7 @@
     background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(139, 90, 43, 0.2);
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter-filter: blur(10px);
 }
 
 /* 情侣照片样式 */
