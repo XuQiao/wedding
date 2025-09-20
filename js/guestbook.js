@@ -50,7 +50,7 @@ async function loadMessages() {
             existingContainer.innerHTML = existingMessages;
             messagesContainer.appendChild(existingContainer);
         }
-        
+
         if (issues.length === 0 && existingMessages.trim() === '') {
             messagesContainer.innerHTML = '<p style="text-align:center;color:#999;">暂无留言，快来写下你的祝福吧~</p>';
         }
@@ -87,7 +87,7 @@ async function postMessage(newMessage) {
         <p>${message}</p>
         <small>${time}</small>
     `;
-    messagesContainer.appendChild(messageItem);
+    messagesContainer.prepend(messageItem);
     
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -131,15 +131,16 @@ form.addEventListener('submit', async function(e) {
     const submitBtn = messageForm.querySelector('button');
     submitBtn.disabled = true;
     submitBtn.textContent = '提交中...';
+
+    // 清空表单
+    form.reset();
+    
     if (response) {
         // 清空表单
         messageForm.reset();
     } else {
         alert(response.json);
     }
-    
-    // 清空表单
-    form.reset();
     
     // 显示成功提示
     alert('感谢您的祝福！');
