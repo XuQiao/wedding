@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
         
+        
         // 页面首次交互时尝试播放音乐
         document.addEventListener('click', function firstInteraction() {
             tryPlayMusic();
@@ -88,6 +89,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 初始化音乐控制
     setupMusicControl();
+});
+
+var music = document.getElementById("music");
+var currentTime = 0;
+
+// 监听音乐播放事件
+music.addEventListener("timeupdate", function() {
+    currentTime = music.currentTime;
+});
+
+// 监听页面离开事件
+window.addEventListener("beforeunload", function() {
+    sessionStorage.setItem("currentTime", currentTime);
+});
+
+// 监听页面加载事件
+window.addEventListener("load", function() {
+    var storedTime = sessionStorage.getItem("currentTime");
+    if (storedTime) {
+        music.currentTime = parseFloat(storedTime);
+        music.play();
+    }
 });
 
 // 背景音乐控制

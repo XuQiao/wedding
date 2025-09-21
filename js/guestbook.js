@@ -89,6 +89,11 @@ async function postMessage(newMessage) {
     `;
     messagesContainer.prepend(messageItem);
     
+    // 清空表单
+    form.reset();
+    // 显示成功提示
+    alert('感谢您的祝福！');
+
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     } 
@@ -99,7 +104,6 @@ async function postMessage(newMessage) {
     return await response.json();
 }
 
-    
 const textarea = document.getElementById('message')
 textarea.addEventListener('input', function()  {
     const text = textarea.value;
@@ -132,9 +136,6 @@ form.addEventListener('submit', async function(e) {
     submitBtn.disabled = true;
     submitBtn.textContent = '提交中...';
 
-    // 清空表单
-    form.reset();
-    
     if (response) {
         // 清空表单
         messageForm.reset();
@@ -142,9 +143,6 @@ form.addEventListener('submit', async function(e) {
         alert(response.json);
     }
     
-    // 显示成功提示
-    alert('感谢您的祝福！');
-
     // 恢复提交按钮
     submitBtn.disabled = false;
     submitBtn.textContent = '提交祝福';
