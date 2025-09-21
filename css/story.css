@@ -115,7 +115,16 @@ body {
         display: none; /* 小屏幕隐藏装饰元素 */
     }
 }
+
 .videos {
-    width: 90%;
-    height: 60%;
+    display: block;
+    margin: 0 20px 0 20px;
+    padding: 0 20px 0 20px;
+}
+
+video {
+    display: flex;
+    width: 100%;
+    object-fit: fill;
+    height: 100%;
 }
