@@ -115,3 +115,7 @@ body {
         display: none; /* 小屏幕隐藏装饰元素 */
     }
 }
+.videos {
+    width: 90%;
+    height: 60%;
+}
