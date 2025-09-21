@@ -10,8 +10,7 @@ body {
 }
 
 .chapter {
-    position: relative;
-    overflow: hidden;
+    position: flex;
     width: 100%; /* 根据实际图片宽度调整 */
 }
 
@@ -24,11 +23,22 @@ body {
 .slide img {
     width: 100%;
     height: auto;
-    display: block;
+    position: absolute;
+    display: flex;
 }
-.slide:hover {
-    transform: translateX(-100%);
-}
+
+@keyframes slide {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -300px;
+    }
+  }
+
+  .slider img {
+    animation: slide 3s infinite;
+  }
 
 .chapter p {
     font-size: 12px;
