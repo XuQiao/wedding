@@ -60,7 +60,7 @@ function initMap() {
         automove: true
         })
     }
-
+/*
     // 点击标记显示信息窗口
     Object.entries(marker).forEach(([key, value]) => {
         value.on('click', function() {
@@ -73,12 +73,13 @@ function initMap() {
             map.setZoomAndCenter(map.getZoom()>13?map.getZoom():14,value.getPosition());//设置地图放大级别及居中
         })
     })
-    
+    */
 /*
     banquetMarker.on('click', function() {
         infoWindow1.open(map, banquetMarker.getPosition());
     });
 */
+/*
     // POI点交互
     document.querySelectorAll('.poi-item').forEach(item => {
         item.addEventListener('click', function() {
@@ -94,7 +95,7 @@ function initMap() {
             }, 400);
         });
     });
-
+*/
     // 导航功能
     /*
     document.getElementById('navigation-btn').addEventListener('click', function() {
