@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setupMusicControl();
 });
 
-var music = document.getElementById("music");
+var music = document.getElementById("bgMusic");
 var currentTime = 0;
 
 // 监听音乐播放事件

@@ -9,117 +9,57 @@ body {
     padding-bottom: 60px; /* 等于导航栏高度 */
 }
 
-/* 章节通用样式 */
 .chapter {
-    padding: 30px 20px;
-    margin: 0 auto;
-    max-width: 800px;
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(139, 90, 43, 0.1);
-    margin-bottom: 40px;
     position: relative;
     overflow: hidden;
+    width: 100%; /* 根据实际图片宽度调整 */
 }
 
-/* 章节标题 */
-.chapter h2 {
-    font-family: 'Ma Shan Zheng', cursive;
-    color: #8b5a2b;
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 25px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.chapter h2::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(to right, transparent, #d4a373, transparent);
-}
-
-/* 章节图片 */
-.chapter img {
+.slide {
+    display: flex;
     width: 100%;
-    height: 40%;
-    border-radius: 10px;
-    padding: 0;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    border: 2px solid #f8f5f0;
+    transition: transform 0.5s ease;
 }
 
-.chapter img:hover {
-    transform: scale(1.02);
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.slide:hover {
+    transform: translateX(-100%);
 }
 
-/* 章节文字内容 */
 .chapter p {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #5a3e2b;
-    margin: 15px 0;
-    text-align: justify;
-    padding: 0 10px;
+    font-size: 12px;
+}
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
 }
 
-/* 装饰元素 */
-.chapter::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    width: 60px;
-    height: 60px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23d4a373" d="M50 0 L100 50 L50 100 L0 50 Z"/></svg>') no-repeat;
-    opacity: 0.1;
-    z-index: -1;
+.prev {
+    left: 0;
 }
 
-.chapter::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    right: -10px;
-    width: 80px;
-    height: 80px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%23d4a373" opacity="0.1"/></svg>') no-repeat;
-    z-index: -1;
-}
-@media (max-width: 768px) {
-    .chapter {
-        padding: 20px 15px;
-        margin: 0 10px 30px;
-        border-radius: 12px;
-    }
-    
-    .chapter h2 {
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-    
-    .chapter p {
-        font-size: 15px;
-        line-height: 1.7;
-        padding: 0 5px;
-    }
-    
-    .chapter::before,
-    .chapter::after {
-        display: none; /* 小屏幕隐藏装饰元素 */
-    }
+.next {
+    right: 0;
 }
 
 .videos {
     display: block;
     margin: 0 20px 0 20px;
     padding: 0 20px 0 20px;
+}
+
+.videos p{
+    font-size: 15px;
 }
 
 video {

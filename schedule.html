@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>安排</title>
+    <title>婚礼当日日程</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/schedule.css">
     <!-- link href="https://fonts.googleapis.cn/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet"-->
@@ -11,7 +11,7 @@
 
 <body>
         <div class="schedules">
-            <h2>婚礼当天安排</h2>
+            <h2>当天安排</h2>
             <section class="chapter">
                 <img src="./images/party1.png" alt="party1">
                 <img src="./images/party2.png" alt="party2">
@@ -21,6 +21,20 @@
         </div>
         
     </div>
+
+    <!-- 音乐控制按钮 -->
+    <div class="music-control" id="musicControl">
+        <span class="music-icon">🎵</span>
+        <span class="music-text"></span>
+    </div>
+
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" controls autoplay loop>
+        <source src="audio/这是我一生中最勇敢的瞬间.mp3" type="audio/mp3">
+    </audio>
+    <script type="module" src="js/main.js"></script>
+
+    
     <!-- 底部导航栏 -->
     <div class="bottom-nav">
         <a href="index.html" class="nav-item">
