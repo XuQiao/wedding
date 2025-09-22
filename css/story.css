@@ -10,7 +10,7 @@ body {
 }
 
 .chapter p {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 button {
@@ -34,8 +34,8 @@ button {
 
 .videos {
     display: block;
-    margin: 0 20px 0 20px;
-    padding: 0 20px 0 20px;
+    margin: 0 0px 0 10px;
+    padding: 0 0px 0 20px;
 }
 
 .videos p{
